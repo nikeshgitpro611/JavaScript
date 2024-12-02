@@ -1,4 +1,15 @@
-let a = 10,
-  b = 12;
-[a, b] = [b, a];
-console.log(a, b);
+const company = {
+  name: "TechCorp",
+  employees: [
+    { name: "Alice", role: "Developer" },
+    { name: "Bob", role: "Designer" },
+  ],
+  location: {
+    city: "San Francisco",
+    country: "USA",
+  },
+};
+
+//name of the second employee  and the city of the location.
+const {employees : [,{name}], location : {city}} = company
+console.log('name : ', name,city);
