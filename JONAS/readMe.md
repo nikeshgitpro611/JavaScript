@@ -107,6 +107,9 @@ or
 The **rest operator** allows you to gather multiple elements or properties into a new array or object
 
 **Feature	Spread Operator	Rest Operator**
+
 *Purpose*	Expands elements/properties	**Gathers elements/properties**
+
 *Use Case*	Function calls, array/object copying, **combining	Function parameters, destructuring**
+
 *Context*	Expands into individual items	**Combines into an array/object**
