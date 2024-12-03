@@ -1,8 +1,22 @@
-const key = "status";
-const order = {
-  id: 123, 
-  status: "shipped",
+const data = {
+  user: {
+    id: 1,
+    name: "John Doe",
+    details: {
+      age: 30,
+      city: "New York",
+      country: "USA",
+    },
+  },
+  status: "active",
+  role: "admin",
 };
-const {[key]: value} = order;
-console.log('key', key);
-console.log('value', value);
+
+const {
+  user: {
+    details: { city, ...country },
+  },
+  ...role
+} = data;
+console.log("user : ", city, country);
+console.log("role : ", role);

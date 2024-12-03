@@ -99,6 +99,25 @@ for (const { id, info: { name, age} } of data) {
 
 The **spread operator** allows you to take an array or object and expand its elements/properties into a new array, object, or as arguments to a function.
 
+Q> What is the output of the following?
+
+```
+const obj1 = { a: 1, b: { c: 2 } };
+const obj2 = { ...obj1 };
+obj2.b.c = 3;
+console.log(obj1.b.c);
+console.log(obj2.b.c);
+```
+
+Q> How does the spread operator behave with sparse arrays?
+
+Undefined
+
+```
+const arr = [1, , 3];
+const newArr = [...arr];
+console.log(newArr); // ?
+```
 
 The **rest operator** collects multiple elements or properties into a single array or object. It is primarily used in function parameters or destructuring assignments to gather remaining values.
 
@@ -113,3 +132,30 @@ The **rest operator** allows you to gather multiple elements or properties into 
 *Use Case*	Function calls, array/object copying, **combining	Function parameters, destructuring**
 
 *Context*	Expands into individual items	**Combines into an array/object**
+
+Q> How do you handle deep destructuring with the rest operator?
+
+```
+const data = {
+  user: {
+    id: 1,
+    name: "John Doe",
+    details: {
+      age: 30,
+      city: "New York",
+      country: "USA",
+    },
+  },
+  status: "active",
+  role: "admin",
+};
+
+const {
+  user: {
+    details: { city, ...country },
+  },
+  ...role
+} = data;
+console.log("user : ", city, country);
+console.log("role : ", role);
+```
