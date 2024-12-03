@@ -2,9 +2,9 @@
 
  **What we learn in this section**
 
-1. Destructure Array
-2. Destructure Object
-3. The Spread operator
+1. Destructure Array (ok)
+2. Destructure Object (ok)
+3. The Spread operator (ok)
 4. Rest pattern and parameters 
 5. Short Circuit (&& and ||)
 6. Nullish(??)
@@ -82,3 +82,31 @@ const company = {
 const {employees : [,{name}], location : {city}} = company
 console.log('name : ', name,city);
 ```
+
+Q> How would you extract data when you have both arrays and objects?
+
+```
+const data = [
+  { id: 1, info: { name: "Alice", age: 30 } },
+  { id: 2, info: { name: "Bob", age: 25 } },
+];
+
+for (const { id, info: { name, age} } of data) {
+  console.log('element : ', `Hi your id is ${id} and your name is ${name} and your age is ${age}`);
+}
+```
+**Spread Operator and Rest Operator**
+
+The **spread operator** allows you to take an array or object and expand its elements/properties into a new array, object, or as arguments to a function.
+
+
+The **rest operator** collects multiple elements or properties into a single array or object. It is primarily used in function parameters or destructuring assignments to gather remaining values.
+
+or
+
+The **rest operator** allows you to gather multiple elements or properties into a new array or object
+
+**Feature	Spread Operator	Rest Operator**
+*Purpose*	Expands elements/properties	**Gathers elements/properties**
+*Use Case*	Function calls, array/object copying, **combining	Function parameters, destructuring**
+*Context*	Expands into individual items	**Combines into an array/object**

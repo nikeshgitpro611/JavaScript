@@ -1,15 +1,8 @@
-const company = {
-  name: "TechCorp",
-  employees: [
-    { name: "Alice", role: "Developer" },
-    { name: "Bob", role: "Designer" },
-  ],
-  location: {
-    city: "San Francisco",
-    country: "USA",
-  },
+const key = "status";
+const order = {
+  id: 123, 
+  status: "shipped",
 };
-
-//name of the second employee  and the city of the location.
-const {employees : [,{name}], location : {city}} = company
-console.log('name : ', name,city);
+const {[key]: value} = order;
+console.log('key', key);
+console.log('value', value);
