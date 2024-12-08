@@ -1,11 +1,13 @@
 # Section - 09
 
- **What we learn in this section**
+repo - https://github.com/jonasschmedtmann/complete-javascript-course
+
+**What we learn in this section**
 
 1. Destructure Array (ok)
 2. Destructure Object (ok)
 3. The Spread operator (ok)
-4. Rest pattern and parameters 
+4. Rest pattern and parameters
 5. Short Circuit (&& and ||)
 6. Nullish(??)
 7. for of
@@ -43,6 +45,7 @@ Ans - let a = 1, b = 2;
 [a, b] = [b, a];
 console.log(a, b);
 ```
+
 Q> Destructure the following nested array to extract 3 and 6
 
 ```
@@ -50,6 +53,7 @@ const nestedArr = [[1, 2], [3, 4], [5, 6]];
 const [, [a],[,b]] = nestedArr;
 console.log(a,b);
 ```
+
 **Object Destructure**
 
 ```
@@ -95,6 +99,7 @@ for (const { id, info: { name, age} } of data) {
   console.log('element : ', `Hi your id is ${id} and your name is ${name} and your age is ${age}`);
 }
 ```
+
 **Spread Operator and Rest Operator**
 
 The **spread operator** allows you to take an array or object and expand its elements/properties into a new array, object, or as arguments to a function.
@@ -125,13 +130,13 @@ or
 
 The **rest operator** allows you to gather multiple elements or properties into a new array or object
 
-**Feature	Spread Operator	Rest Operator**
+**Feature Spread Operator Rest Operator**
 
-*Purpose*	Expands elements/properties	**Gathers elements/properties**
+_Purpose_ Expands elements/properties **Gathers elements/properties**
 
-*Use Case*	Function calls, array/object copying, **combining	Function parameters, destructuring**
+_Use Case_ Function calls, array/object copying, **combining Function parameters, destructuring**
 
-*Context*	Expands into individual items	**Combines into an array/object**
+_Context_ Expands into individual items **Combines into an array/object**
 
 Q> How do you handle deep destructuring with the rest operator?
 
@@ -158,4 +163,189 @@ const {
 } = data;
 console.log("user : ", city, country);
 console.log("role : ", role);
+```
+
+Q> How can you use the rest operator to implement a flexible pipeline of functions?
+
+```
+const test = (number, ...AllFunction) => {
+    return AllFunction.reduce((acc, fn) => acc * fn(number), 1);
+}
+const multiply = (x) => x * x;
+const square = (x) => x ** x
+const result = test(3, multiply, square);
+console.log('result : ', result);
+```
+
+Q> What difference between or(||) and nullish operate(??)
+
+The || operator returns the first truthy value or the last value if all are falsy.
+
+It treats the following **values as falsy:** false, 0, '' (empty string), null, undefined, and NaN.
+
+```
+const value = 0 || 'default';
+console.log(value); // Output: 'default' (0 is falsy)
+
+const value2 = false || 42;
+console.log(value2); // Output: 42 (false is falsy)
+```
+
+The **?? operator specifically returns the right-hand operand only if the left-hand operand is null or undefined.**
+
+It does not consider other falsy values like 0, false, or ''.
+
+```
+const value = 0 ?? 'default';
+console.log(value); // Output: 0 (0 is not null or undefined)
+
+const value2 = null ?? 'default';
+console.log(value2); // Output: 'default' (null is nullish)
+
+const value3 = undefined ?? 42;
+console.log(value3); // Output: 42 (undefined is nullish)
+```
+
+**When to Use**
+
+|| is useful for general truthy/falsy checks:
+
+```
+const name = '' || 'Anonymous'; // Output: 'Anonymous'
+```
+
+?? is useful when 0, false, or '' are valid values:
+
+```
+const count = 0 ?? 10; // Output: 0
+```
+
+<!-- ==============================INTERVIEW QUESTION================================ -->
+
+Q> Marge id and increase numbers
+
+```
+const starterMenu = [
+  {
+    id: 1,
+    name: "Garlic Bread",
+    description: "Crispy bread topped with garlic butter and herbs",
+    price: 5.99,
+  },
+  {
+    id: 2,
+    name: "Bruschetta",
+    description: "Toasted bread with fresh tomatoes, basil, and olive oil",
+    price: 6.99,
+  },
+  {
+    id: 3,
+    name: "Caesar Salad",
+    description: "Classic Caesar salad with romaine, croutons, and Parmesan",
+    price: 7.49,
+  },
+  {
+    id: 4,
+    name: "Spring Rolls",
+    description:
+      "Crispy rolls filled with vegetables and served with dipping sauce",
+    price: 4.99,
+  },
+  {
+    id: 5,
+    name: "Stuffed Mushrooms",
+    description: "Baked mushrooms filled with cheese and herbs",
+    price: 6.49,
+  },
+];
+
+const mainMenu = [
+  {
+    id: 1,
+    name: "Grilled Chicken",
+    description: "Marinated chicken breast grilled to perfection",
+    price: 14.99,
+  },
+  {
+    id: 2,
+    name: "Spaghetti Carbonara",
+    description: "Classic Italian pasta with creamy sauce and pancetta",
+    price: 13.99,
+  },
+];
+
+const dessertMenu = [...starterMenu, ...mainMenu];
+const test = new Set(dessertMenu.map((menu) => menu.id));
+console.log('test', test);
+
+let newid = 1;
+dessertMenu.forEach((menu) => {
+    console.log('menuHas', test.has(menu.id));
+
+  if (test.has(menu.id)) {
+    menu.id = newid++;
+    test.add(menu.id);
+  }
+});
+console.log("dessertMenu", dessertMenu);
+
+```
+
+Q> Find unique Email id
+
+```
+const users = [
+  { id: 1, name: "Alice", email: "alice@example.com" },
+  { id: 2, name: "Bob", email: "bob@example.com" },
+  { id: 3, name: "Alice", email: "alice@example.com" },
+  { id: 4, name: "Charlie", email: "charlie@example.com" },
+];
+
+const checkEmail = () => {
+  return users.reduce((acc, user) => {
+    acc[user.email] = (acc[user.email] || 0) + 1;
+    return acc;
+  }, {});
+};
+console.log("checkEmail : ", checkEmail());
+
+const getDuplicates = (emailCounts) => {
+  return Object.keys(emailCounts).filter((email) => emailCounts[email] > 1);
+};
+
+console.log("checkEmailFilter : ", getDuplicates(checkEmail()));
+```
+
+Q> Find unique transition id
+
+const transactions = [
+{ transaction_id: "TX001", amount: 100 },
+{ transaction_id: "TX002", amount: 200 },
+{ transaction_id: "TX001", amount: 150 },
+{ transaction_id: "TX003", amount: 250 },
+];
+
+```
+const uniqueTransactionIds = () => {
+  return transactions.reduce((uniqueIds, transaction) => {
+    uniqueIds[transaction.transaction_id] =
+      (uniqueIds[transaction.transaction_id] || 0) + 1;
+    return uniqueIds;
+  }, {});
+};
+
+const uniqueDupicate = (passedArray) => {
+  const dupliCate = Object.keys(passedArray).filter(
+    (key) => passedArray[key] > 1
+  );
+  const unique = Object.keys(passedArray).filter(
+    (key) => passedArray[key] === 1
+  );
+  return {
+    duplicate: dupliCate,
+    unique: unique,
+  };
+};
+
+console.log(uniqueDupicate(uniqueTransactionIds()));
 ```
