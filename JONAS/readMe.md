@@ -349,3 +349,19 @@ const uniqueDupicate = (passedArray) => {
 
 console.log(uniqueDupicate(uniqueTransactionIds()));
 ```
+
+Q> How can you get index of array
+
+```
+const fruits = ["apple", "banana", "cherry"];
+const vegs = ["potato", "tomato", "carrot"];
+
+const all = [...fruits, ...vegs];
+
+for (const[index, value] of all.entries()) {
+  console.log('index : ',index,'value : ',value);
+}
+
+Note :  all.entries()
+- Returns an iterable of key, value pairs for every entry in the array
+```
