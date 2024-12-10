@@ -24,9 +24,11 @@ const restoreStatus = {
   },
 };
 
-for (const day of weekdays) {
-  const open = restoreStatus[day];
-  open !== undefined
-    ? console.log(`${day} open at ${open.open} and close at ${open.close}`)
-    : console.log(`${day} Holiday`);
+let objKey = Object.keys(restoreStatus);
+let objValue = Object.values(restoreStatus);
+let openDays = `we are open ${objKey.length} days: `;
+for (const days of Object.keys(restoreStatus)) {
+  openDays += `${days.toLocaleUpperCase()}, `;
 }
+console.log("element : ", openDays);
+console.log("objValue : ", objValue);

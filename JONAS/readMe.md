@@ -222,7 +222,7 @@ const count = 0 ?? 10; // Output: 0
 
 <!-- ==============================INTERVIEW QUESTION================================ -->
 
-Q> Marge id and increase numbers
+# Q> Marge id and increase numbers
 
 ```
 const starterMenu = [
@@ -291,7 +291,7 @@ console.log("dessertMenu", dessertMenu);
 
 ```
 
-Q> Find unique Email id
+# Q> Find unique Email id
 
 ```
 const users = [
@@ -316,7 +316,7 @@ const getDuplicates = (emailCounts) => {
 console.log("checkEmailFilter : ", getDuplicates(checkEmail()));
 ```
 
-Q> Find unique transition id
+# Q> Find unique transition id
 
 const transactions = [
 { transaction_id: "TX001", amount: 100 },
@@ -350,7 +350,7 @@ const uniqueDupicate = (passedArray) => {
 console.log(uniqueDupicate(uniqueTransactionIds()));
 ```
 
-Q> How can you get index of array
+# Q> How can you get index of array
 
 ```
 const fruits = ["apple", "banana", "cherry"];
@@ -365,7 +365,7 @@ for (const[index, value] of all.entries()) {
 Note :  all.entries()
 - Returns an iterable of key, value pairs for every entry in the array
 ```
-Q> Find when restore open and close.
+# Q> Find when restore open and close.
 
 ```
 const weekdays = ["mon", "tus", "wed", "thu", "fri", "sat", "sun"];
@@ -400,4 +400,49 @@ for (const day of weekdays) {
     ? console.log(`${day} open at ${open.open} and close at ${open.close}`)
     : console.log(`${day} Holiday`);
 }
+```
+
+# Q> Object key and object Val 
+
+let objKey = Object.keys(restoreStatus);
+
+let objValue = Object.values(restoreStatus);
+
+return type will be [];
+
+```
+const weekdays = ["mon", "tus", "wed", "thu", "fri", "sat", "sun"];
+const [mon, tus, wed, thu, fri] = weekdays;
+
+const restoreStatus = {
+  mon: {
+    open: "9:00am",
+    close: "22:00pm",
+  },
+  tus: {
+    open: "9:00am",
+    close: "2:00pm",
+  },
+  wed: {
+    open: "9:00am",
+    close: "12:00pm",
+  },
+  thu: {
+    open: "9:00am",
+    close: "2:00pm",
+  },
+  fri: {
+    open: "9:00am",
+    close: "2:00pm",
+  },
+};
+
+let objKey = Object.keys(restoreStatus);
+let objValue = Object.values(restoreStatus);
+let openDays = `we are open ${objKey.length} days: `;
+for (const days of Object.keys(restoreStatus)) {
+  openDays += `${days.toLocaleUpperCase()}, `;
+}
+console.log("element : ", openDays);
+console.log("objValue : ", objValue);
 ```
