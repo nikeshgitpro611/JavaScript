@@ -446,3 +446,22 @@ for (const days of Object.keys(restoreStatus)) {
 console.log("element : ", openDays);
 console.log("objValue : ", objValue);
 ```
+# > SET
+
+- It's unique collection and never have any duplicate collection.
+
+- return type will be (primitive (String, Boolean, Number.etc))
+
+```
+const setExm = new Set('pizzaapple');
+
+console.log(setExm.size); // 6
+console.log(setExm.has('p')); // true
+console.log(setExm.has('o')); // false
+console.log(setExm.add('o')); // { 'p', 'i', 'z', 'a', 'l', 'e', 'o' }
+console.log(setExm.delete('o')); // { 'p', 'i', 'z', 'a', 'l', 'e' }
+console.log(setExm.clear()); // {}
+
+
+console.log(setExm);
+```
