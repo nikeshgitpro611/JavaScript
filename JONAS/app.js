@@ -1,34 +1,49 @@
-const weekdays = ["mon", "tus", "wed", "thu", "fri", "sat", "sun"];
-const [mon, tus, wed, thu, fri] = weekdays;
-
-const restoreStatus = {
-  mon: {
-    open: "9:00am",
-    close: "22:00pm",
-  },
-  tus: {
-    open: "9:00am",
-    close: "2:00pm",
-  },
-  wed: {
-    open: "9:00am",
-    close: "12:00pm",
-  },
-  thu: {
-    open: "9:00am",
-    close: "2:00pm",
-  },
-  fri: {
-    open: "9:00am",
-    close: "2:00pm",
+const game = {
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [
+    [
+      'Neuer',
+      'Pavard',
+      'Martinez',
+      'Alaba',
+      'Davies',
+      'Kimmich',
+      'Goretzka',
+      'Coman',
+      'Muller',
+      'Gnarby',
+      'Lewandowski',
+    ],
+    [
+      'Burki',
+      'Schulz',
+      'Hummels',      
+      'Akanji',
+      'Hakimi',
+      'Weigl',
+      'Witsel',
+      'Hazard',
+      'Brandt',
+      'Sancho',
+      'Gotze',
+    ],
+  ],  
+  score: '4:0',       
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
   },
 };
 
-let objKey = Object.keys(restoreStatus);
-let objValue = Object.values(restoreStatus);
-let openDays = `we are open ${objKey.length} days: `;
-for (const days of Object.keys(restoreStatus)) {
-  openDays += `${days.toLocaleUpperCase()}, `;
+let avg = {};
+let sum = 0;
+for (const [key, value] of Object.entries(game.odds)) {
+  sum += value;
+  sum /= key.length;
+  avg['Avg'] = sum;
 }
-console.log("element : ", openDays);
-console.log("objValue : ", objValue);
+console.log(avg);
