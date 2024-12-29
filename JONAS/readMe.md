@@ -51,7 +51,7 @@ Q> Destructure the following nested array to extract 3 and 6
 ```
 const nestedArr = [[1, 2], [3, 4], [5, 6]];
 const [, [a],[,b]] = nestedArr;
-console.log(a,b);
+console.log(a,b); 
 ```
 
 **Object Destructure**
@@ -365,6 +365,7 @@ for (const[index, value] of all.entries()) {
 Note :  all.entries()
 - Returns an iterable of key, value pairs for every entry in the array
 ```
+
 # Q> Find when restore open and close.
 
 ```
@@ -402,7 +403,7 @@ for (const day of weekdays) {
 }
 ```
 
-# Q> Object key and object Val 
+# Q> Object key and object Val
 
 let objKey = Object.keys(restoreStatus);
 
@@ -446,6 +447,7 @@ for (const days of Object.keys(restoreStatus)) {
 console.log("element : ", openDays);
 console.log("objValue : ", objValue);
 ```
+
 # > SET
 
 - It's unique collection and never have any duplicate collection.
@@ -465,6 +467,7 @@ console.log(setExm.clear()); // {}
 
 console.log(setExm);
 ```
+
 # > Intersection
 
 - Find the duplicate values of the Set.
@@ -484,5 +487,116 @@ console.log('unical : ',unical); // Set { 'Pizza', 'Pasta', 'Risotto', 'Spaghett
 console.log('spread : ',spread); // [ 'Pizza', 'Pasta', 'Risotto', 'Spaghetti', 'Fusilli' ]
 console.log('difference : ',difference); // Set { 'Spaghetti', 'Fusilli' }
 console.log('symanticAll : ',symanticAll); // Set { 'Spaghetti', 'Fusilli', 'Pizza', 'Pasta', 'Risotto' }
+```
 
+# > new Map()
+
+- It allows you to store key-value pairs, where both the keys and values can be of any data type. Here's an overview of how to use Map effectively:
+
+```
+const allStore = new Map([
+  ["Question", "Who is Pm of India?"],
+  [1, "P.kumar"],
+  ["key3", "value3"],
+  [2, "Gandhi"],
+  ["Correct", 2],
+]);
+console.log("allStore : ", allStore);
+
+//Convert to Array
+const arr = [...allStore];
+console.log("arr : ", arr); //Array(4) [ [ 'Question', 'Who is Pm of India?' ], [ 1, 'P.kumar' ], [ 'key3', 'value3' ], [ 2, 'Gandhi' ] ]
+
+//Convert to Object
+const obj = Object.fromEntries(allStore);
+console.log("obj : ", obj); //{ Question: 'Who is Pm of India?', 1: 'P.kumar', key3: 'value3', 2: 'Gandhi' }
+
+//Map
+//Iterable
+for (const [key, value] of allStore) {
+  typeof key === "number" && value === "Gandhi"
+    ? console.log(`Answer ${key} : ${value}`)
+    : console.log(`Wrong ${key} : ${value}`);
+}
+
+// const Answer =  prompt("Enter Your Answer");
+
+// if (Number(Answer)=== allStore.get("Correct")) {
+//   console.log("Your Answer is Correct");
+// } else {
+//   console.log("Your Answer is Wrong");
+// }
+```
+
+# Q> Common Methods Between Arrays and Strings
+
+1. length
+
+- Returns the length of an array or string.
+
+```
+const arr = [1, 2, 3];
+const str = "hello";
+console.log(arr.length); // 3
+console.log(str.length); // 5
+```
+
+2. indexOf()
+
+- Returns the first index at which a specified element (or substring) is found, or -1 if not found.
+
+```
+const arr = [1, 2, 3, 2];
+const str = "hello";
+console.log(arr.indexOf(2)); // 1
+console.log(str.indexOf('e')); // 1
+```
+
+3. includes()
+
+- Returns type boolean.
+
+```
+const arr = [1, 2, 3];
+const str = "hello";
+console.log(arr.includes(2)); // true
+console.log(str.includes('e')); // true
+
+```
+
+4. slice()
+
+- slice(-,-), which is used to get the part of a string.
+- First arguement represents your starting index, from there we can take n(difference of first and second arguement) charactor(s).
+- In slice method, first arguement always less than second arguement.
+
+```
+const arr = [1, 2, 3, 4];
+const str = "hello";
+console.log(arr.slice(1, 3)); // [2, 3]
+console.log(str.slice(1, 3)); // "el"
+```
+
+5. concat()
+
+- concat(--), which is used to combine two strings..
+
+```
+const arr1 = [1, 2];
+const arr2 = [3, 4];
+const str1 = "hello";
+const str2 = " world";
+console.log(arr1.concat(arr2)); // [1, 2, 3, 4]
+console.log(str1.concat(str2)); // "hello world"
+
+# padStart and padEnd Method
+```
+const masterCraditcard = (str) => {
+  let string = str;
+  let last4 = string.slice(-4);
+  return last4.padStart(string.length, "*");
+};
+
+const result = masterCraditcard("1234567890123456");
+console.log(result);
 ```
