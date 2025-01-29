@@ -645,16 +645,12 @@ const newFunc = func.bind(thisArg, arg1, arg2, ...)
 - When you want to create a reusable function with a specific this context.
 - Useful in event handlers or callbacks where this may lose its context.
 
-
-
 **STORY:** When we have two flight details and need to use the same function for another flight booking, we can use the call, apply, and bind methods in such situations.
 
 ```
 const flight = {
     company: "Lufthansa",
     number: "LH123",
-    airbus: 333,
-    plane: "A320",
     gate: "23B",
     bookings: [],
     checkIn: function(flightNum, name){
@@ -664,7 +660,6 @@ const flight = {
 }
 flight.checkIn(23, 'mohamed');
 flight.checkIn(24, 'ali');
-flight.checkIn(25, 'sara');
 flight.bookings.forEach((booking) => console.log(booking));
 
 const secondFlight = {
