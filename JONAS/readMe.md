@@ -590,6 +590,7 @@ console.log(arr1.concat(arr2)); // [1, 2, 3, 4]
 console.log(str1.concat(str2)); // "hello world"
 
 # padStart and padEnd Method
+
 ```
 const masterCraditcard = (str) => {
   let string = str;
@@ -618,7 +619,7 @@ data("World");
 s1("Hello")("body");
 ```
 
-#  Q > Call and  Apply and bind.
+# Q> Call and  Apply and bind.
 
 **Definition :** These three methods (call, apply, and bind) are used to control the value of this when invoking a function. They are especially useful when borrowing functions or reusing a function in a different context (object).
 
@@ -642,7 +643,9 @@ const newFunc = func.bind(thisArg, arg1, arg2, ...)
 
 ```
 **Use Case:**
+
 - When you want to create a reusable function with a specific this context.
+
 - Useful in event handlers or callbacks where this may lose its context.
 
 **STORY:** When we have two flight details and need to use the same function for another flight booking, we can use the call, apply, and bind methods in such situations.
