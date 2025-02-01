@@ -710,3 +710,44 @@ binAll(24, "ali");
 book.call(secondFlight, 9, "smith");
 console.log(secondFlight); // { company: 'airline', bookings: [ { flight: 'airline 24', name: 'ali', Gate: 2 } ] }
 ```
+
+# INTERVIEW QUESTION OF CALL,APPLY AND BIND
+- What Should be out put.
+
+```
+01. function multiply(a, b) {
+    console.log(a,b); //2,3
+    return a * b;
+}
+const double = multiply.bind(null, 2);
+const triple = double.bind(null, 3);
+console.log(triple(2)); 
+
+02. function Person(name) {
+    this.name = name;
+}
+const obj = {};
+
+Person.call(obj, 'mohamed');
+console.log(obj.name);
+console.log(obj);
+
+03. function sayHello() {
+    console.log(this.name);
+}
+const user = { name: "Alice" };
+const boundHello = sayHello.bind(user);
+boundHello.call({ name: "Bob" });
+
+CASE : .bind(user) permanently sets this to user, making it impossible to override, even with .call() or .apply().
+
+04. const car = {
+    brand: "Toyota",
+    getBrand: function() {
+        return this.brand;
+    }
+};
+const bike = { brand: "Honda" };
+console.log(car.getBrand.call(bike)); // ?
+
+```
