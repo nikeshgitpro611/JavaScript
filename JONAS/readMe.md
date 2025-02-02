@@ -750,4 +750,6 @@ CASE : .bind(user) permanently sets this to user, making it impossible to overri
 const bike = { brand: "Honda" };
 console.log(car.getBrand.call(bike)); // ?
 
+**BONUS :**
+Show out put of log(new Array(4).fill(0))
 ```
