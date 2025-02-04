@@ -1,1 +1,1 @@
-console.log(new Array(4).fill(0));
+(()=> console.log("test defined"))() // Reason of empty () is to invoke the function

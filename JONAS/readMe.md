@@ -753,3 +753,23 @@ console.log(car.getBrand.call(bike)); // ?
 **BONUS :**
 Show out put of log(new Array(4).fill(0))
 ```
+# q> What is IFFE
+Reasoned about IIFE use case in JS for a few seconds
+An IIFE (Immediately Invoked Function Expression) is a function in JavaScript that runs as soon as it’s defined. It’s typically used to create a private scope
+
+**Why Use an IIFE?**
+- Encapsulation: Variables and functions declared inside the IIFE aren’t accessible outside of it.
+- Avoiding Global Scope Pollution: Especially important in older JavaScript versions where var is function-scoped.
+- Initialization Code: It’s a handy pattern for executing setup code that doesn’t need to be reused.
+```
+(()=> console.log("test defined"))() // Reason of empty () is to invoke the function.
+
+(function() {
+  // This code runs immediately.
+  var message = "Hello, World!";
+  console.log(message); // "Hello, World!"
+})();
+
+// Trying to access 'message' here would result in an error.
+
+```
