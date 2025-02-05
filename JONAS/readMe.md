@@ -755,11 +755,13 @@ Show out put of log(new Array(4).fill(0))
 ```
 # q> What is IFFE
 Reasoned about IIFE use case in JS for a few seconds
-An IIFE (Immediately Invoked Function Expression) is a function in JavaScript that runs as soon as it’s defined. It’s typically used to create a private scope
+An IIFE (Immediately Invoked Function Expression) is a function in JavaScript that runs as soon as 
+it’s defined. It’s typically used to create a private scope
 
 **Why Use an IIFE?**
 - Encapsulation: Variables and functions declared inside the IIFE aren’t accessible outside of it.
-- Avoiding Global Scope Pollution: Especially important in older JavaScript versions where var is function-scoped.
+- Avoiding Global Scope Pollution: Especially important in older JavaScript versions where var is 
+function-scoped.
 - Initialization Code: It’s a handy pattern for executing setup code that doesn’t need to be reused.
 ```
 (()=> console.log("test defined"))() // Reason of empty () is to invoke the function.
@@ -773,3 +775,61 @@ An IIFE (Immediately Invoked Function Expression) is a function in JavaScript th
 // Trying to access 'message' here would result in an error.
 
 ```
+# Q> Closer 
+
+A closure is a function that "remembers" the variables from its outer scope 
+even after the outer function has finished executing.
+
+```
+function outerFunction(outerVariable) {
+    return function innerFunction(innerVariable) {
+        console.log(`Outer: ${outerVariable}, Inner: ${innerVariable}`);
+    };
+}
+
+const closureExample = outerFunction("Hello");
+closureExample("World");  // Output: Outer: Hello, Inner: World
+```
+
+**USE CASE**
+1) Data Encapsulation 
+from being accessed or modified directly.
+```
+function createCounter() {
+    let count = 0;  // Private variable
+    return {
+        increment: function() {
+            count++;
+            console.log(`Count: ${count}`);
+        },
+        decrement: function() {
+            count--;
+            console.log(`Count: ${count}`);
+        },
+        getCount: function() {
+            return count;
+        }
+    };
+}
+
+const counter = createCounter();
+counter.increment(); // Count: 1
+counter.increment(); // Count: 2
+console.log(counter.getCount()); // 2
+counter.decrement(); // Count: 1
+```
+2) Memoization
+The cache object remembers previously computed results, improving performance.
+```
+const memoizedFibonacci = () => {
+  let cache = {}; // Stores computed values
+  return (fib = (n) => {
+   if(n in cache) return cache[n];
+   return n <= 1 ? n : cache[n] = fib(n -1) + fib(n - 2)
+  });
+};
+
+const fibonacci = memoizedFibonacci();
+console.log(fibonacci(10)); // 55
+```
+
