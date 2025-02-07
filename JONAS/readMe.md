@@ -833,3 +833,15 @@ const fibonacci = memoizedFibonacci();
 console.log(fibonacci(10)); // 55
 ```
 
+# Q> New Map Method.
+
+In JavaScript, the Map object is a built-in data structure that allows you to store key-value pairs, where keys can be of any data type (including objects and functions).
+
+**Basic Methods of Map**
+Method	Description
+**set(key, value)**	- Adds or updates a key-value pair.
+**get(key)**	- Retrieves the value associated with the key.
+**has(key)**	- Returns true if the key exists, otherwise false.
+**delete(key)**	- Removes a key-value pair.
+**clear()**	- Removes all key-value pairs.
+**size**	- Returns the number of key-value pairs.
