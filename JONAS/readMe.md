@@ -853,6 +853,16 @@ In JavaScript, the Map object is a built-in data structure that allows you to st
 
 **size**	- Returns the number of key-value pairs.
 
+```
+const map = new Map();
+map.set('name', 'John');
+map.set('age', 30);
+map.set('city', 'New York');
+
+let getVal = map.delete('age', 30); // instead of delete we can use map.has('age') and map.get('age')
+console.log(map);
+```
+
 > Iteration Methods
 
 Method	Description
@@ -864,3 +874,51 @@ Method	Description
 **entries()**	Returns an iterator of all key-value pairs as [key, value] arrays.
 
 **forEach(callbackFn)**	 Iterates through each key-value pair in insertion order.
+
+>> ARRAY METHOD
+
+1) slice method.
+
+The slice() method in JavaScript is used to create a shallow copy of an array or **extract a portion of an array or string without modifying the original data.**
+```
+array.slice(startIndex, endIndex);
+
+```
+
+2) Splice
+
+The splice() method in JavaScript is used to modify an array by adding, removing, or replacing elements. Unlike slice(), splice() modifies the original array                                                                                                                                                                                                     
+``
+Difference Between slice() and splice()
+
+
+Method	Modifies Original Array?	Returns New Array?	Used for
+
+slice()	❌ No	✅ Yes	Extracting elements
+
+splice()	✅ Yes	✅ Yes (removed elements)	Adding, removing, replace
+
+# Q> Filter and Reduce method
+
+**Filter :** 
+
+```
+array.filter(callback(element, index, array), thisArg);
+```
+- callback: A function that runs for each element in the array.
+- element: The current element.
+- index (optional): The index of the current element.
+- array (optional): The original array.
+- thisArg (optional): Value to use as this inside the callback.
+
+# Q. const numbers = [1, 2, 3, 2, 4, 5, 3, 6]; //remove the duplicate value
+Hints - by Set method
+
+Hints - by filter
+# Q. You have an array of user names. Return only the names that contain the letter "a" (case insensitive).
+
+const users = ["Alice", "Bob", "Amanda", "Charlie", "David"]; 
+
+output : //["Alice", "Amanda", "Charlie", "David"]
+
+# Question: Remove all falsy values (false, 0, null, undefined, "", NaN) from an array.

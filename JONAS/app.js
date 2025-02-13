@@ -1,9 +1,10 @@
-const currancy= new Map([
-  ['USD','United States Dollar'],
-  ['EUR','Euro'],
-  ['GBP','Pound Sterling'],
-  ['INR','Indian Rupee'],
-  ['AUD','Australian Dollar'],
-]);
+const calAvgHumnAge = (num) => {
+  let multData = num.map((ele) => ele * 2);
+  let totalDeposit = multData
+    .filter((ele) => ele > 0)
+    .reduce((Acc, ele, i, acc) => Acc + ele/acc.length, {letVal : 0});
+    console.log('totalDeposit : ', totalDeposit);
+    
+};
 
-console.log(currancy);
+calAvgHumnAge([5, 2, 4, 1, -15, -8, 3]);
