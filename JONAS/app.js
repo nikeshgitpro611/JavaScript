@@ -1,10 +1,6 @@
-const calAvgHumnAge = (num) => {
-  let multData = num.map((ele) => ele * 2);
-  let totalDeposit = multData
-    .filter((ele) => ele > 0)
-    .reduce((Acc, ele, i, acc) => Acc + ele/acc.length, {letVal : 0});
-    console.log('totalDeposit : ', totalDeposit);
-    
+const findMissingElements = (arr1, arr2) => {
+    let missingElement = arr1.filter(ele => !arr2.includes(ele));
+    console.log(missingElement);
 };
 
-calAvgHumnAge([5, 2, 4, 1, -15, -8, 3]);
+findMissingElements([1, 2, 3, 4, 5], [2, 4]);

@@ -51,7 +51,7 @@ Q> Destructure the following nested array to extract 3 and 6
 ```
 const nestedArr = [[1, 2], [3, 4], [5, 6]];
 const [, [a],[,b]] = nestedArr;
-console.log(a,b); 
+console.log(a,b);
 ```
 
 **Object Destructure**
@@ -602,11 +602,12 @@ const masterCraditcard = (str) => {
 const result = masterCraditcard("1234567890123456");
 console.log(result);
 ```
+
 # Q> Closer
 
- A closure in JavaScript is a function that "remembers" the variables from its outer scope even after the outer function has finished executing.
+A closure in JavaScript is a function that "remembers" the variables from its outer scope even after the outer function has finished executing.
 
- A closure is essentially a combination of a function and its lexical environment (the surrounding state where the function was defined).
+A closure is essentially a combination of a function and its lexical environment (the surrounding state where the function was defined).
 
 ```
 const s1 = (p1) => {
@@ -620,11 +621,11 @@ data("World");
 s1("Hello")("body");
 ```
 
-# Q> Call and  Apply and bind.
+# Q> Call and Apply and bind.
 
- **Definition :** These three methods (call, apply, and bind) are used to control the value of this when invoking a function. They are especially useful when borrowing functions or reusing a function in a different context (object).
+**Definition :** These three methods (call, apply, and bind) are used to control the value of this when invoking a function. They are especially useful when borrowing functions or reusing a function in a different context (object).
 
- **The call()** method invokes a function and explicitly sets the value of this for that function. Additional arguments are passed individually.
+**The call()** method invokes a function and explicitly sets the value of this for that function. Additional arguments are passed individually.
 
 ```
 func.call(thisArg, arg1, arg2, ...)
@@ -643,13 +644,14 @@ func.apply(thisArg, [arg1, arg2, ...])
 const newFunc = func.bind(thisArg, arg1, arg2, ...)
 
 ```
- **Use Case:**
+
+**Use Case:**
 
 - When you want to create a reusable function with a specific this context.
 
 - Useful in event handlers or callbacks where this may lose its context.
 
- **STORY:** When we have two flight details and need to use the same function for another flight booking, we can use the call, apply, and bind methods in such situations.
+  **STORY:** When we have two flight details and need to use the same function for another flight booking, we can use the call, apply, and bind methods in such situations.
 
 ```
 const flight = {
@@ -658,7 +660,7 @@ const flight = {
     gate: "23B",
     bookings: [],
     checkIn: function(flightNum, name){
-       console.log(`${name} checked in to ${this.company} ${flightNum}`) 
+       console.log(`${name} checked in to ${this.company} ${flightNum}`)
        flight.bookings.push({flight: `${this.company} ${flightNum}`, name: name,Gate: this.gate});
     }
 }
@@ -674,7 +676,7 @@ const secondFlight = {
 }
 //Assigning but this will not work
 const book = flight.checkIn;
-// book(89,'mohamed');  //Error typoError  
+// book(89,'mohamed');  //Error typoError
 book.call(secondFlight, 89,'john');
 book.call(secondFlight, 9,'smith');
 console.log(secondFlight.bookings);
@@ -712,6 +714,7 @@ console.log(secondFlight); // { company: 'airline', bookings: [ { flight: 'airli
 ```
 
 # INTERVIEW QUESTION OF CALL,APPLY AND BIND
+
 - What Should be out put.
 
 ```
@@ -721,7 +724,7 @@ console.log(secondFlight); // { company: 'airline', bookings: [ { flight: 'airli
 }
 const double = multiply.bind(null, 2);
 const triple = double.bind(null, 3);
-console.log(triple(2)); 
+console.log(triple(2));
 
 02. function Person(name) {
     this.name = name;
@@ -753,16 +756,20 @@ console.log(car.getBrand.call(bike)); // ?
 **BONUS :**
 Show out put of log(new Array(4).fill(0))
 ```
+
 # q> What is IFFE
+
 Reasoned about IIFE use case in JS for a few seconds
-An IIFE (Immediately Invoked Function Expression) is a function in JavaScript that runs as soon as 
+An IIFE (Immediately Invoked Function Expression) is a function in JavaScript that runs as soon as
 it’s defined. It’s typically used to create a private scope
 
 **Why Use an IIFE?**
+
 - Encapsulation: Variables and functions declared inside the IIFE aren’t accessible outside of it.
-- Avoiding Global Scope Pollution: Especially important in older JavaScript versions where var is 
-function-scoped.
+- Avoiding Global Scope Pollution: Especially important in older JavaScript versions where var is
+  function-scoped.
 - Initialization Code: It’s a handy pattern for executing setup code that doesn’t need to be reused.
+
 ```
 (()=> console.log("test defined"))() // Reason of empty () is to invoke the function.
 
@@ -775,9 +782,10 @@ function-scoped.
 // Trying to access 'message' here would result in an error.
 
 ```
-# Q> Closer 
 
-A closure is a function that "remembers" the variables from its outer scope 
+# Q> Closer
+
+A closure is a function that "remembers" the variables from its outer scope
 even after the outer function has finished executing.
 
 ```
@@ -792,8 +800,10 @@ closureExample("World");  // Output: Outer: Hello, Inner: World
 ```
 
 **USE CASE**
-1) Data Encapsulation 
-from being accessed or modified directly.
+
+1. Data Encapsulation
+   from being accessed or modified directly.
+
 ```
 function createCounter() {
     let count = 0;  // Private variable
@@ -818,8 +828,10 @@ counter.increment(); // Count: 2
 console.log(counter.getCount()); // 2
 counter.decrement(); // Count: 1
 ```
-2) Memoization
-The cache object remembers previously computed results, improving performance.
+
+2. Memoization
+   The cache object remembers previously computed results, improving performance.
+
 ```
 const memoizedFibonacci = () => {
   let cache = {}; // Stores computed values
@@ -839,19 +851,19 @@ In JavaScript, the Map object is a built-in data structure that allows you to st
 
 **Basic Methods of Map**
 
-> Method	Description
+> Method Description
 
-**set(key, value)**	- Adds or updates a key-value pair.
+**set(key, value)** - Adds or updates a key-value pair.
 
-**get(key)**	- Retrieves the value associated with the key.
+**get(key)** - Retrieves the value associated with the key.
 
-**has(key)**	- Returns true if the key exists, otherwise false.
+**has(key)** - Returns true if the key exists, otherwise false.
 
-**delete(key)**	- Removes a key-value pair.
+**delete(key)** - Removes a key-value pair.
 
-**clear()**	- Removes all key-value pairs.
+**clear()** - Removes all key-value pairs.
 
-**size**	- Returns the number of key-value pairs.
+**size** - Returns the number of key-value pairs.
 
 ```
 const map = new Map();
@@ -865,46 +877,47 @@ console.log(map);
 
 > Iteration Methods
 
-Method	Description
+Method Description
 
-**keys()**	Returns an iterator of all keys.
+**keys()** Returns an iterator of all keys.
 
-**values()**	Returns an iterator of all values.
+**values()** Returns an iterator of all values.
 
-**entries()**	Returns an iterator of all key-value pairs as [key, value] arrays.
+**entries()** Returns an iterator of all key-value pairs as [key, value] arrays.
 
-**forEach(callbackFn)**	 Iterates through each key-value pair in insertion order.
+**forEach(callbackFn)** Iterates through each key-value pair in insertion order.
 
->> ARRAY METHOD
+> > ARRAY METHOD
 
-1) slice method.
+1. slice method.
 
 The slice() method in JavaScript is used to create a shallow copy of an array or **extract a portion of an array or string without modifying the original data.**
+
 ```
 array.slice(startIndex, endIndex);
 
 ```
 
-2) Splice
+2. Splice
 
-The splice() method in JavaScript is used to modify an array by adding, removing, or replacing elements. Unlike slice(), splice() modifies the original array                                                                                                                                                                                                     
+The splice() method in JavaScript is used to modify an array by adding, removing, or replacing elements. Unlike slice(), splice() modifies the original array  
 ``
 Difference Between slice() and splice()
 
+Method Modifies Original Array? Returns New Array? Used for
 
-Method	Modifies Original Array?	Returns New Array?	Used for
+slice() ❌ No ✅ Yes Extracting elements
 
-slice()	❌ No	✅ Yes	Extracting elements
-
-splice()	✅ Yes	✅ Yes (removed elements)	Adding, removing, replace
+splice() ✅ Yes ✅ Yes (removed elements) Adding, removing, replace
 
 # Q> Filter and Reduce method
 
-**Filter :** 
+**Filter :**
 
 ```
 array.filter(callback(element, index, array), thisArg);
 ```
+
 - callback: A function that runs for each element in the array.
 - element: The current element.
 - index (optional): The index of the current element.
@@ -912,13 +925,85 @@ array.filter(callback(element, index, array), thisArg);
 - thisArg (optional): Value to use as this inside the callback.
 
 # Q. const numbers = [1, 2, 3, 2, 4, 5, 3, 6]; //remove the duplicate value
+
 Hints - by Set method
 
 Hints - by filter
+
 # Q. You have an array of user names. Return only the names that contain the letter "a" (case insensitive).
 
-const users = ["Alice", "Bob", "Amanda", "Charlie", "David"]; 
+const users = ["Alice", "Bob", "Amanda", "Charlie", "David"];
 
 output : //["Alice", "Amanda", "Charlie", "David"]
 
 # Question: Remove all falsy values (false, 0, null, undefined, "", NaN) from an array.
+
+# Q. What does map() return if no values satisfy the transformation condition?
+
+Ans - Undefine
+
+```
+const arr = [1, 2, 3];
+const result = arr.map(num => (num > 5 ? num * 2 : undefined));
+
+console.log(result); // [undefined, undefined, undefined]
+```
+
+# Q. What does filter() return if no elements pass the condition?
+Ans - it returns an empty array ([]).
+```
+const arr = [1, 2, 3];
+const result = arr.filter(num => num > 5);
+
+console.log(result); // []
+```
+# coding
+1) Find max age in array
+```
+const users = [
+  { name: "Alice", age: 25 },
+  { name: "Bob", age: 30 },
+  { name: "Charlie", age: 35 },
+];
+
+const nameInArr = users.reduce((acc, ele) => ele.age > acc.age ? ele : acc, users[0]);
+console.log("nameInArr : ", nameInArr);
+```
+
+# Find Method
+- find(-,-), which is used to find an element in the array, based on condition.
+- , the .find() method is used to search for an element in an array that satisfies a given condition. It returns the first matching element or undefined if no match is found.
+- Which take 2 arguments, one callback function and thisArg. and in function take pass argument (value,index,arr);
+
+```
+array.find(callback(element, index, array), thisArg);
+```
+# include
+- this method use in array and string both
+- The .includes() method is used to check whether an array or string contains a specified value. It **returns true if the value is found and false otherwise**.
+
+```
+array.includes(value, startIndex);
+
+string.includes(substring, startIndex);
+
+Ex - 
+const allowedColors = ["red", "green", "blue"];
+const userColor = "red";
+
+if (allowedColors.includes(userColor)) {
+    console.log("Valid color");
+} else {
+    console.log("Invalid color");
+}
+
+EX - 2 FIND MISSING ELEMENTS
+const findMissingElements = (arr1, arr2) => {
+    let missingElement = arr1.filter(ele => !arr2.includes(ele));
+    console.log(missingElement);
+};
+
+findMissingElements([1, 2, 3, 4, 5], [2, 4]);
+```
+
+

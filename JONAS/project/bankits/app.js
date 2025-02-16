@@ -73,36 +73,32 @@ const displayMovements = (movements) => {
     containerMovements.insertAdjacentHTML("afterbegin", html);
   });
 };
-displayMovements(account1.movements);
 
-const totalMoney = (movements) => {
-  let val = movements
-    .filter((ele) => ele > 0)
+const totalMoney = (acc) => {
+  acc.balance = acc.movements
+    .filter((ele) => ele)
     .reduce((acc, ele) => acc + ele, 0);
-  console.log("movements : ", val);
-  labelBalance.textContent = `${val}₹`;
+  labelBalance.textContent = `${acc.balance}₹`;
 };
-totalMoney(account1.movements);
 
-const calDisplaySummary = (movements) => {
-  let incomes = movements
+const calDisplaySummary = (acc) => {
+  acc.balance = acc.movements
     .filter((ele) => ele > 0)
     .reduce((acc, ele) => acc + ele, 0);
-  labelSumIn.textContent = `${incomes}₹`;
+  labelSumIn.textContent = `${acc.balance}₹`;
   //Deduction
-  let deduction = movements
+  let deduction = acc.movements
     .filter((ele) => ele < 0)
     .reduce((acc, ele) => acc + ele, 0);
   labelSumOut.textContent = `${Math.abs(deduction)}₹`;
 
   //each deposit 1.2% interest
-  let deposit = movements
+  let deposit = acc.movements
     .filter((ele) => ele > 0)
-    .map((deposit) => (deposit * 1.2) / 100)
+    .map((deposit) => (deposit * acc.interestRate) / 100)
     .reduce((acc, ele) => acc + ele, 0);
-    labelSumInterest.textContent = `${deposit}₹`
+  labelSumInterest.textContent = `${deposit.toFixed(2)}₹`;
 };
-calDisplaySummary(account1.movements);
 
 const creatUsername = (acc) => {
   acc.forEach((val) => {
@@ -114,3 +110,73 @@ const creatUsername = (acc) => {
   });
 };
 creatUsername(accounts);
+
+//Ui Display
+const uiDisplay = (acc) => {
+  displayMovements(acc.movements);
+  totalMoney(acc);
+  calDisplaySummary(acc);
+};
+
+//Event Handling
+let currentAccount;
+
+btnLogin.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  currentAccount = accounts.find(
+    (acc) => acc.userName === inputLoginUsername.value
+  );
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    labelWelcome.textContent = `Welcome back, ${
+      currentAccount.owner.split(" ")[0]
+    }`;
+    containerApp.style.opacity = 100;
+    inputLoginUsername.value = inputLoginPin.value = "";
+    inputLoginPin.blur();
+
+    uiDisplay(currentAccount);
+  }
+
+  //Transfer Amout card
+  btnTransfer.addEventListener("click", (e) => {
+    e.preventDefault();
+    let Amount = Number(inputTransferAmount.value);
+    let receiverAcc = accounts.find(
+      (acc) => acc.userName === inputTransferTo.value
+    );
+
+    if (
+      Amount > 0 &&
+      receiverAcc &&
+      currentAccount.balance >= Amount &&
+      receiverAcc?.userName !== currentAccount.userName
+    ) {
+      currentAccount.movements.push(-Amount);
+
+      receiverAcc.movements.push(Amount);
+
+      uiDisplay(currentAccount);
+    }
+    inputTransferTo.value = inputTransferAmount.value = "";
+  });
+
+  btnClose.addEventListener("click", (e) => {
+    e.preventDefault();
+    let confimAcc = accounts.find(
+      (acc) => acc.userName === inputCloseUsername.value
+    );
+    if (confimAcc && confimAcc?.pin === Number(inputClosePin.value)) {
+      let index =  accounts.findIndex(
+        (acc) => acc.userName === currentAccount.userName
+      );
+      
+      accounts.splice(index, 1);
+
+      containerApp.style.opacity = 0;
+    }
+    inputCloseUsername.value = inputClosePin.value = "";
+    console.log('accounts : ', accounts);
+  });
+  
+});
