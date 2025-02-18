@@ -1005,5 +1005,10 @@ const findMissingElements = (arr1, arr2) => {
 
 findMissingElements([1, 2, 3, 4, 5], [2, 4]);
 ```
+# Some
+- The Array.prototype.some() method in JavaScript is used to check if at least one element in an array satisfies a given condition. It returns a boolean value: true if at least one element meets the condition, and false otherwise.
 
+```
+arr.some(callback(element, index, array), thisArg)
+```
 
