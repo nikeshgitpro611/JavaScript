@@ -180,3 +180,16 @@ btnLogin.addEventListener("click", (e) => {
   });
   
 });
+
+
+btnLoan.addEventListener("click", (e) => {
+  e.preventDefault();
+  let amount = Number(inputLoanAmount.value);
+  console.log('amount : ', amount);
+  if(amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)){
+    currentAccount.movements.push(amount);
+    uiDisplay(currentAccount);
+  }
+  inputLoanAmount.value = "";
+  
+});    

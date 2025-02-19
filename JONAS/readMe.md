@@ -1012,3 +1012,153 @@ findMissingElements([1, 2, 3, 4, 5], [2, 4]);
 arr.some(callback(element, index, array), thisArg)
 ```
 
+# BONUS POiNTS
+
+> Event Listener Methods
+```
+document.querySelector("button").addEventListener("click", () => console.log("Clicked!"));
+document.removeEventListener("click", handler);
+```
+>  Set & Map Methods
+```
+let set = new Set([1, 2, 3]);
+set.add(4);
+set.has(3); // true
+set.delete(2);
+set.clear();
+
+let map = new Map();
+map.set("name", "John");
+map.get("name"); // "John"
+map.has("name"); // true
+map.delete("name");
+map.clear();
+```
+>  LocalStorage Methods
+```
+localStorage.setItem("key", "value"); // Stores
+localStorage.getItem("key"); // Retrieves
+localStorage.removeItem("key"); // Removes
+localStorage.clear(); // Clears all
+```
+> JSON Methods
+```
+let jsonStr = '{"name": "John", "age": 30}';
+JSON.parse(jsonStr);  // Converts to object
+JSON.stringify({ name: "John", age: 30 }); // Converts to string
+```
+> Promise Methods
+```
+let promise = new Promise((resolve, reject) => resolve("Success"));
+promise.then(res => console.log(res)); // "Success"
+promise.catch(err => console.log(err));
+promise.finally(() => console.log("Done"));
+
+Promise.all([p1, p2, p3]); // Resolves when all promises resolve
+Promise.race([p1, p2, p3]); // Resolves when first promise resolves
+Promise.any([p1, p2, p3]);  // Resolves with first fulfilled promise
+Promise.allSettled([p1, p2, p3]); // Returns results of all promises
+```
+>  Function Method
+```
+function greet(name) {
+  console.log("Hello " + name);
+}
+greet.length;        // Number of parameters (1)
+greet.name;          // "greet"
+greet.call(null, "John"); // "Hello John"
+greet.apply(null, ["John"]); // "Hello John"
+let boundFunc = greet.bind(null, "John");
+boundFunc();         // "Hello John"
+```
+> Date Methods
+```
+let date = new Date();
+date.getFullYear();  // 2025
+date.getMonth();     // 0-11
+date.getDate();      // 1-31
+date.getDay();       // 0-6 (Sunday-Saturday)
+date.getHours();     // 0-23
+date.getMinutes();   // 0-59
+date.getSeconds();   // 0-59
+date.toISOString();  // "2025-02-19T12:34:56.789Z"
+date.toDateString(); // "Wed Feb 19 2025"
+date.toTimeString(); // "12:34:56 GMT+0000 (UTC)"
+```
+> Number Methods
+```
+let num = 123.456;
+num.toFixed(2);      // "123.46"
+num.toPrecision(4);  // "123.5"
+num.toString();      // "123.456"
+Number.isInteger(10); // true
+Number.isNaN(NaN);   // true
+Number.parseInt("10.5"); // 10
+Number.parseFloat("10.5"); // 10.5
+Math.round(4.7);     // 5
+Math.floor(4.7);     // 4
+Math.ceil(4.2);      // 5
+Math.abs(-10);       // 10
+Math.min(1, 2, 3);   // 1
+Math.max(1, 2, 3);   // 3
+Math.random();       // Random number between 0 and 1
+```
+> Object Methods
+```
+let obj = { name: "John", age: 30 };
+Object.keys(obj);   // ["name", "age"]
+Object.values(obj); // ["John", 30]
+Object.entries(obj); // [["name", "John"], ["age", 30]]
+Object.assign({}, obj, { gender: "Male" }); // Merges objects
+Object.freeze(obj); // Prevents modification
+Object.seal(obj);   // Prevents adding/removing properties
+Object.hasOwnProperty("name"); // true
+Object.getOwnPropertyNames(obj); // ["name", "age"]
+```
+> Array Methods
+```
+let arr = [1, 2, 3, 4, 5];
+arr.length;         // 5
+arr.push(6);        // Adds 6 to end
+arr.pop();          // Removes last element
+arr.shift();        // Removes first element
+arr.unshift(0);     // Adds 0 to beginning
+arr.includes(3);    // true
+arr.indexOf(3);     // 2
+arr.lastIndexOf(3); // 2
+arr.reverse();      // [5, 4, 3, 2, 1]
+arr.sort();         // Sorts alphabetically
+arr.slice(1, 3);    // [2, 3]
+arr.splice(2, 1);   // Removes 1 element at index 2
+arr.join("-");      // "1-2-3-4-5"
+arr.concat([6, 7]); // Merges arrays
+arr.map(x => x * 2);  // [2, 4, 6, 8, 10]
+arr.filter(x => x > 2); // [3, 4, 5]
+arr.find(x => x > 2);   // 3 (first match)
+arr.findIndex(x => x > 2); // 2
+arr.reduce((a, b) => a + b, 0); // Sum
+arr.every(x => x > 0); // true
+arr.some(x => x > 4);  // true
+arr.forEach(x => console.log(x)); // Iterates
+```
+> String Methods
+```
+let str = "Hello, World!";
+str.length;           // 13
+str.toUpperCase();    // "HELLO, WORLD!"
+str.toLowerCase();    // "hello, world!"
+str.charAt(0);        // "H"
+str.indexOf("o");     // 4
+str.lastIndexOf("o"); // 8
+str.includes("Hello"); // true
+str.startsWith("He"); // true
+str.endsWith("!");    // true
+str.slice(0, 5);      // "Hello"
+str.substring(0, 5);  // "Hello"
+str.substr(0, 5);     // "Hello" (deprecated)
+str.replace("Hello", "Hi"); // "Hi, World!"
+str.split(", ");      // ["Hello", "World!"]
+str.trim();           // Removes spaces at start & end
+str.repeat(3);        // "Hello, World!Hello, World!Hello, World!"
+```
+
