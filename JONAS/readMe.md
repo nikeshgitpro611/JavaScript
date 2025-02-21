@@ -1161,4 +1161,43 @@ str.split(", ");      // ["Hello", "World!"]
 str.trim();           // Removes spaces at start & end
 str.repeat(3);        // "Hello, World!Hello, World!Hello, World!"
 ```
+# Q What difference b/w Object.entries() & Object.fromEntries().
+> Object.entries()  
+- Converts an object into an array of key-value pairs ([key, value]).
+- Used for iteration and transformation.
+```
+const obj = { a: 1, b: 2, c: 3 };
+console.log(Object.entries(obj));
+//Output : - [ ['a', 1], ['b', 2], ['c', 3] ]
+```
+> Object.fromEntries()
+- Converts an array of key-value pairs back into an object.
+- Useful for reconstructing objects after transformations.
+```
+const entries = [['a', 1], ['b', 2], ['c', 3]];
+console.log(Object.fromEntries(entries));
+output - { a: 1, b: 2, c: 3 }
+```
+> Coding Round
+```
+Q: const obj = { x: 10, y: 20, z: 30 }; //{ x: 20, y: 40, z: 60 }
+
+const modifiedObj = Object.fromEntries(
+  Object.entries(obj).map(([key, value]) => [key, value * 2])
+);
+
+console.log(modifiedObj);
+
+Q// const obj = { a: 1, b: 2, c: 3 }; // remove a key-value pair from an object.
+
+const updatedObj =  Object.fromEntries(
+  Object.entries(obj).filter(([key]) => key != 'b')
+);
+
+<!-- or -->
+const updatedObj = Object.keys(obj).reduce((acc, key) => {
+  key !== "b" && (acc[key] = obj[key]);
+  return acc;
+}, {});
+```
 
