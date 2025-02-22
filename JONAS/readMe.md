@@ -1200,4 +1200,21 @@ const updatedObj = Object.keys(obj).reduce((acc, key) => {
   return acc;
 }, {});
 ```
+# Q// Differance b/w flatMap and new Set().
 
+### Feature	flatMap()	new Set()
+- Works on - 	Arrays	Any iterable (usually arrays)
+- Purpose	- Maps and flattens one level	Removes duplicates
+- Returns	- A new array	A Set (or an array if spread)
+- Flattening - 	Yes (one level)	No
+- Uniqueness	- No	Yes
+
+# SORT METHODS
+Sorting Type	Example
+- Default (String) - 	arr.sort()
+- Ascending (Numbers)	- arr.sort((a, b) => a - b)
+- Descending (Numbers)	- arr.sort((a, b) => b - a)
+- Case-Insensitive	- arr.sort((a, b) => a.localeCompare(b))
+- Objects (By Property)	- arr.sort((a, b) => a.prop - b.prop)
+- Dates	- arr.sort((a, b) => a - b)
+- Reverse Order	.reverse()

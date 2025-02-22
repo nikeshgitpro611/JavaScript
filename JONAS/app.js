@@ -1,5 +1,8 @@
-//Is empty Obj
-let obj = {};
+const users = [
+    { name: "Alice", age: 30 },
+    { name: "Bob", age: 25 },
+    { name: "Charlie", age: 35 }
+  ];
 
-let CheckProperties = (obj) => Object.keys(obj).length === 0;
-console.log(CheckProperties({a:2,b:3}));
+  let srtAge = users.sort((a,b)=> a.name - b.name).flatMap(user => user.age);
+  console.log(srtAge);
