@@ -1218,3 +1218,64 @@ Sorting Type	Example
 - Objects (By Property)	- arr.sort((a, b) => a.prop - b.prop)
 - Dates	- arr.sort((a, b) => a - b)
 - Reverse Order	.reverse()
+
+# Q// What is Object.groupBy()
+
+- The Object.groupBy() method is a new feature introduced in ES2023 
+- Returns → An object where keys are group names and values are arrays of grouped elements.
+```
+Object.groupBy(array, callbackFn);
+```
+```
+Ex -01
+const users = [
+  { name: "Alice", age: 30 },
+  { name: "Bob", age: 25 },
+  { name: "Charlie", age: 30 },
+  { name: "David", age: 25 }
+];
+
+// Group users by age
+const groupedByAge = Object.groupBy(users, user => user.age);
+console.log(groupedByAge);
+//Output
+{
+  "30": [ { "name": "Alice", "age": 30 }, { "name": "Charlie", "age": 30 } ],
+  "25": [ { "name": "Bob", "age": 25 }, { "name": "David", "age": 25 } ]
+}
+
+// Ex - 02
+
+let products = [
+  { name: "Pen", price: 5 },
+  { name: "Notebook", price: 15 },
+  { name: "Laptop", price: 1000 },
+  { name: "Phone", price: 500 },
+  { name: "Pencil", price: 3 },
+];
+let test = Object.groupBy(products, (product) => {
+  if (product.price < 16) return "cheap";
+  if (product.price < 501) return "medium";
+  return "expensive";
+});
+for (const key in test) {
+  console.log(key);
+  test[key].sort((a, b) => a.price - b.price);
+}
+
+console.log('test : ',test);
+
+EX- 03
+let fruits = ["apple", "banana", "apple", "cherry", "banana", "apple"];
+
+let uniqueFruits = Object.groupBy(fruits, (grp) => grp);
+//convert Array type and coun
+let newPass = Object.entries(uniqueFruits).map(([cnt, list]) => {
+  return {
+    cnt,
+    list: list.length,
+  };
+});
+console.log(newPass);
+
+```
