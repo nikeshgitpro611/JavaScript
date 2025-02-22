@@ -1,11 +1,5 @@
-let fruits = ["apple", "banana", "apple", "cherry", "banana", "apple"];
+let arr = Array.from({ length: 5 }, (_, i) => i + 1);
+console.log(arr);
 
-let uniqueFruits = Object.groupBy(fruits, (grp) => grp);
-//convert Array type and coun
-let newPass = Object.entries(uniqueFruits).map(([cnt, list]) => {
-  return {
-    cnt,
-    list: list.length,
-  };
-});
-console.log(newPass);
+let arr1 = Array.from({ length: 15 }, (_, i) => i + 1);
+console.log(arr1);

@@ -950,15 +950,20 @@ console.log(result); // [undefined, undefined, undefined]
 ```
 
 # Q. What does filter() return if no elements pass the condition?
+
 Ans - it returns an empty array ([]).
+
 ```
 const arr = [1, 2, 3];
 const result = arr.filter(num => num > 5);
 
 console.log(result); // []
 ```
+
 # coding
-1) Find max age in array
+
+1. Find max age in array
+
 ```
 const users = [
   { name: "Alice", age: 25 },
@@ -971,6 +976,7 @@ console.log("nameInArr : ", nameInArr);
 ```
 
 # Find Method
+
 - find(-,-), which is used to find an element in the array, based on condition.
 - , the .find() method is used to search for an element in an array that satisfies a given condition. It returns the first matching element or undefined if no match is found.
 - Which take 2 arguments, one callback function and thisArg. and in function take pass argument (value,index,arr);
@@ -978,7 +984,9 @@ console.log("nameInArr : ", nameInArr);
 ```
 array.find(callback(element, index, array), thisArg);
 ```
+
 # include
+
 - this method use in array and string both
 - The .includes() method is used to check whether an array or string contains a specified value. It **returns true if the value is found and false otherwise**.
 
@@ -987,7 +995,7 @@ array.includes(value, startIndex);
 
 string.includes(substring, startIndex);
 
-Ex - 
+Ex -
 const allowedColors = ["red", "green", "blue"];
 const userColor = "red";
 
@@ -1005,7 +1013,9 @@ const findMissingElements = (arr1, arr2) => {
 
 findMissingElements([1, 2, 3, 4, 5], [2, 4]);
 ```
+
 # Some
+
 - The Array.prototype.some() method in JavaScript is used to check if at least one element in an array satisfies a given condition. It returns a boolean value: true if at least one element meets the condition, and false otherwise.
 
 ```
@@ -1015,11 +1025,14 @@ arr.some(callback(element, index, array), thisArg)
 # BONUS POiNTS
 
 > Event Listener Methods
+
 ```
 document.querySelector("button").addEventListener("click", () => console.log("Clicked!"));
 document.removeEventListener("click", handler);
 ```
->  Set & Map Methods
+
+> Set & Map Methods
+
 ```
 let set = new Set([1, 2, 3]);
 set.add(4);
@@ -1034,20 +1047,26 @@ map.has("name"); // true
 map.delete("name");
 map.clear();
 ```
->  LocalStorage Methods
+
+> LocalStorage Methods
+
 ```
 localStorage.setItem("key", "value"); // Stores
 localStorage.getItem("key"); // Retrieves
 localStorage.removeItem("key"); // Removes
 localStorage.clear(); // Clears all
 ```
+
 > JSON Methods
+
 ```
 let jsonStr = '{"name": "John", "age": 30}';
 JSON.parse(jsonStr);  // Converts to object
 JSON.stringify({ name: "John", age: 30 }); // Converts to string
 ```
+
 > Promise Methods
+
 ```
 let promise = new Promise((resolve, reject) => resolve("Success"));
 promise.then(res => console.log(res)); // "Success"
@@ -1059,7 +1078,9 @@ Promise.race([p1, p2, p3]); // Resolves when first promise resolves
 Promise.any([p1, p2, p3]);  // Resolves with first fulfilled promise
 Promise.allSettled([p1, p2, p3]); // Returns results of all promises
 ```
->  Function Method
+
+> Function Method
+
 ```
 function greet(name) {
   console.log("Hello " + name);
@@ -1071,7 +1092,9 @@ greet.apply(null, ["John"]); // "Hello John"
 let boundFunc = greet.bind(null, "John");
 boundFunc();         // "Hello John"
 ```
+
 > Date Methods
+
 ```
 let date = new Date();
 date.getFullYear();  // 2025
@@ -1085,7 +1108,9 @@ date.toISOString();  // "2025-02-19T12:34:56.789Z"
 date.toDateString(); // "Wed Feb 19 2025"
 date.toTimeString(); // "12:34:56 GMT+0000 (UTC)"
 ```
+
 > Number Methods
+
 ```
 let num = 123.456;
 num.toFixed(2);      // "123.46"
@@ -1103,7 +1128,9 @@ Math.min(1, 2, 3);   // 1
 Math.max(1, 2, 3);   // 3
 Math.random();       // Random number between 0 and 1
 ```
+
 > Object Methods
+
 ```
 let obj = { name: "John", age: 30 };
 Object.keys(obj);   // ["name", "age"]
@@ -1115,7 +1142,9 @@ Object.seal(obj);   // Prevents adding/removing properties
 Object.hasOwnProperty("name"); // true
 Object.getOwnPropertyNames(obj); // ["name", "age"]
 ```
+
 > Array Methods
+
 ```
 let arr = [1, 2, 3, 4, 5];
 arr.length;         // 5
@@ -1141,7 +1170,9 @@ arr.every(x => x > 0); // true
 arr.some(x => x > 4);  // true
 arr.forEach(x => console.log(x)); // Iterates
 ```
+
 > String Methods
+
 ```
 let str = "Hello, World!";
 str.length;           // 13
@@ -1161,24 +1192,33 @@ str.split(", ");      // ["Hello", "World!"]
 str.trim();           // Removes spaces at start & end
 str.repeat(3);        // "Hello, World!Hello, World!Hello, World!"
 ```
+
 # Q What difference b/w Object.entries() & Object.fromEntries().
-> Object.entries()  
+
+> Object.entries()
+
 - Converts an object into an array of key-value pairs ([key, value]).
 - Used for iteration and transformation.
+
 ```
 const obj = { a: 1, b: 2, c: 3 };
 console.log(Object.entries(obj));
 //Output : - [ ['a', 1], ['b', 2], ['c', 3] ]
 ```
+
 > Object.fromEntries()
+
 - Converts an array of key-value pairs back into an object.
 - Useful for reconstructing objects after transformations.
+
 ```
 const entries = [['a', 1], ['b', 2], ['c', 3]];
 console.log(Object.fromEntries(entries));
 output - { a: 1, b: 2, c: 3 }
 ```
+
 > Coding Round
+
 ```
 Q: const obj = { x: 10, y: 20, z: 30 }; //{ x: 20, y: 40, z: 60 }
 
@@ -1200,32 +1240,38 @@ const updatedObj = Object.keys(obj).reduce((acc, key) => {
   return acc;
 }, {});
 ```
+
 # Q// Differance b/w flatMap and new Set().
 
-### Feature	flatMap()	new Set()
-- Works on - 	Arrays	Any iterable (usually arrays)
-- Purpose	- Maps and flattens one level	Removes duplicates
-- Returns	- A new array	A Set (or an array if spread)
-- Flattening - 	Yes (one level)	No
-- Uniqueness	- No	Yes
+### Feature flatMap() new Set()
+
+- Works on - Arrays Any iterable (usually arrays)
+- Purpose - Maps and flattens one level Removes duplicates
+- Returns - A new array A Set (or an array if spread)
+- Flattening - Yes (one level) No
+- Uniqueness - No Yes
 
 # SORT METHODS
-Sorting Type	Example
-- Default (String) - 	arr.sort()
-- Ascending (Numbers)	- arr.sort((a, b) => a - b)
-- Descending (Numbers)	- arr.sort((a, b) => b - a)
-- Case-Insensitive	- arr.sort((a, b) => a.localeCompare(b))
-- Objects (By Property)	- arr.sort((a, b) => a.prop - b.prop)
-- Dates	- arr.sort((a, b) => a - b)
-- Reverse Order	.reverse()
+
+Sorting Type Example
+
+- Default (String) - arr.sort()
+- Ascending (Numbers) - arr.sort((a, b) => a - b)
+- Descending (Numbers) - arr.sort((a, b) => b - a)
+- Case-Insensitive - arr.sort((a, b) => a.localeCompare(b))
+- Objects (By Property) - arr.sort((a, b) => a.prop - b.prop)
+- Dates - arr.sort((a, b) => a - b)
+- Reverse Order .reverse()
 
 # Q// What is Object.groupBy()
 
-- The Object.groupBy() method is a new feature introduced in ES2023 
+- The Object.groupBy() method is a new feature introduced in ES2023
 - Returns → An object where keys are group names and values are arrays of grouped elements.
+
 ```
 Object.groupBy(array, callbackFn);
 ```
+
 ```
 Ex -01
 const users = [
@@ -1279,3 +1325,38 @@ let newPass = Object.entries(uniqueFruits).map(([cnt, list]) => {
 console.log(newPass);
 
 ```
+
+# Fill method
+
+- The .fill() method in JavaScript is used to fill all or a portion of an array with a static value. It modifies the original array and returns it.
+
+```
+arr.fill(value, start, end)
+```
+
+```
+Ex - 01
+
+//Generating a Range of Numbers
+
+let arr = Array.from({ length: 5 }, (_, i) => i + 1);
+console.log(arr);
+
+//Resetting an Array to Default Value
+let scores = [85, 90, 78, 92];
+scores.fill(0); // Reset all scores
+console.log(scores); // [0,0,0,0,0]
+
+```
+
+> Use Cases of fill()
+
+- Resetting an array to default values.
+- Initializing an array with a specific value.
+- Creating placeholders for upcoming data.
+- Filling empty arrays for performance testing.
+- Generating arrays for mapping operations.
+  Note - we can define array in two way
+
+1. let test = [1,23];
+2. let arr = new Array(5).fill("A");
