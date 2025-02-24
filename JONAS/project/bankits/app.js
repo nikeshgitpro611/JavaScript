@@ -204,3 +204,11 @@ btnSort.addEventListener("click", (e) => {
   sort = !sort
   
 })   
+labelBalance.addEventListener("click", (e) => {
+  e.preventDefault();
+  const movementUi = Array.from(document.querySelectorAll(".movements__value"), el => Number(el.textContent.replace('₹', '')));
+  console.log('movementUi : ', movementUi);
+  let test = movementUi.reduce((acc, ele) => acc + ele, 0);
+  console.log('test : ', test);
+  
+ });

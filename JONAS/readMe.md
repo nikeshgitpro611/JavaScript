@@ -1360,3 +1360,34 @@ console.log(scores); // [0,0,0,0,0]
 
 1. let test = [1,23];
 2. let arr = new Array(5).fill("A");
+
+# Array.from() 
+- The Array.from() method creates a new array from an iterable or array-like object. It allows transformations using a mapping function.
+- The return type of Array.from() is a new array.
+
+```
+Array.from(arrayLike, mapFn, thisArg)
+```
+
+```
+//Get Random Value
+- Use Case: Useful for generating test data.
+
+let randomNum =  Array.from({length: 7}, () => Math.floor(Math.random() * 10));
+console.log('randomNum : ', randomNum);
+
+//How do you remove null or undefined values using Array.from()?
+let arr = [1, null, 2, undefined, 3]; // [1,2,3]
+
+method : 1
+console.log(arr.filter(Boolean));
+
+Method : 2
+
+```
+# Math.trunc().
+
+
+
+# Important method of Array H.w
+![alt text](Img/image.png)
