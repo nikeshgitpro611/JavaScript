@@ -1386,8 +1386,12 @@ Method : 2
 
 ```
 # Math.trunc().
-
-
-
+- that removes the decimal portion of a number and returns only the integer part.
+```
+console.log(Math.trunc(4.9));   // 4
+console.log(Math.trunc(-4.9));  // -4
+console.log(Math.trunc(0.99));  // 0
+console.log(Math.trunc(-0.99)); // -0 (same as 0)
+```
 # Important method of Array H.w
-![alt text](Img/image.png)
+![alt text](project/bankits/Img/image.png)
