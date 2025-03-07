@@ -1395,3 +1395,26 @@ console.log(Math.trunc(-0.99)); // -0 (same as 0)
 ```
 # Important method of Array H.w
 ![alt text](project/bankits/Img/image.png)
+![alt text](project/bankits/Img/image1.png)
+
+# date time calling by api
+
+```
+let option = {
+  hour: "numeric",
+  minute: "numeric",
+  day: "numeric",
+  month: "numeric",
+  year: "numeric",
+  weekday: "long",
+
+}
+const dateTime = new Intl.DateTimeFormat("en-US",option).format(new Date());
+
+labelDate.textContent = dateTime;
+```
+# Q// What is DOM
+- Allow us make it Js interact wit your browser.
+- Dom tree generate HTML document which we can interact with.
+- it have capability to write modified html documents which we can interact
+![alt text](Snnipet/image1.png)

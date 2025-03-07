@@ -204,11 +204,26 @@ btnSort.addEventListener("click", (e) => {
   sort = !sort
   
 })   
-labelBalance.addEventListener("click", (e) => {
-  e.preventDefault();
-  const movementUi = Array.from(document.querySelectorAll(".movements__value"), el => Number(el.textContent.replace('₹', '')));
-  console.log('movementUi : ', movementUi);
-  let test = movementUi.reduce((acc, ele) => acc + ele, 0);
-  console.log('test : ', test);
-  
- });
+
+// let now = new Date();
+// let month = `${now.getMonth() + 1}`.padStart(2, 0);
+// let day = `${now.getDate()}`.padStart(2, 0);
+// let year = now.getFullYear();
+// let hour = `${now.getHours()}`.padStart(2, 0);
+// let time = `${hour}:${now.getMinutes()}`;
+// let AMPM = hour >= 12 ? "PM" : "AM";
+// labelDate.textContent = `${day}/${month}/${year} ${time} ${AMPM}`;
+
+//
+let option = {
+  hour: "numeric",
+  minute: "numeric",
+  day: "numeric",
+  month: "numeric",
+  year: "numeric",
+  weekday: "long",
+
+}
+const dateTime = new Intl.DateTimeFormat("en-US",option).format(new Date());
+
+labelDate.textContent = dateTime;
