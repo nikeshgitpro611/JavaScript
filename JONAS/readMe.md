@@ -1427,7 +1427,53 @@ document.getElementById("parent").addEventListener("click", function (event) {
         console.log("Button clicked:", event.target.textContent);
     }
 });
+
+
+Ex -02
+document.querySelector('.nav').addEventListener('click', (e) => {
+  let test = e.target.classList.contains('nav__link');
+  console.log('test : ', test);
+  if(test) {
+    e.preventDefault();
+    const id = e.target.getAttribute("href");
+    console.log('id : ', id);
+    document.querySelector(id).scrollIntoView({ behavior: "smooth" });
+  }
+})
 ```
 ✅ Handles dynamic elements
+
 ✅ Reduces memory usage
+
 ✅ Simplifies code management
+
+# What is DOM Traversing?
+- traversing refers to navigating through the elements (nodes) of a web page to find, modify, or interact with them using JavaScript. This is useful when you need to move between parent, child, and sibling elements dynamically.
+
+1. Moving Up (Parent Elements)
+- ### parentElement → Gets the direct parent of an element.
+- ### closest(selector) → Finds the nearest ancestor that matches the selector.
+```
+const child = document.querySelector(".child");
+console.log(child.parentElement); // Logs the parent element
+```
+2. Moving Down (Child Elements)
+- ### children → Gets all direct children of an element (returns an HTMLCollection).
+- ### querySelector / querySelectorAll → Finds specific children.
+- ### firstElementChild / lastElementChild → Access first or last child.
+
+3. Moving Sideways (Sibling Elements)
+previousElementSibling → Gets the previous sibling.
+nextElementSibling → Gets the next sibling.
+
+```
+const item = document.querySelector(".active");
+console.log(item.nextElementSibling);  // Next element
+console.log(item.previousElementSibling); // Previous element
+```
+
+✅ Helps navigate and manipulate elements dynamically.
+
+✅ Useful when modifying nested structures like menus, forms, or tables.
+
+✅ Improves performance by selecting elements efficiently.
