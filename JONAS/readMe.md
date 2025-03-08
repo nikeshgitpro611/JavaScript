@@ -1418,3 +1418,16 @@ labelDate.textContent = dateTime;
 - Dom tree generate HTML document which we can interact with.
 - it have capability to write modified html documents which we can interact
 ![alt text](Snnipet/image1.png)
+
+# What is Event Delegation?
+- Event delegation is a JavaScript pattern that allows you to handle events efficiently by assigning a single event listener to a parent element instead of adding listeners to multiple child elements. This takes advantage of event bubbling, where an event propagates from the target element up to its ancestors.
+```
+document.getElementById("parent").addEventListener("click", function (event) {
+    if (event.target.classList.contains("child-button")) {
+        console.log("Button clicked:", event.target.textContent);
+    }
+});
+```
+✅ Handles dynamic elements
+✅ Reduces memory usage
+✅ Simplifies code management
