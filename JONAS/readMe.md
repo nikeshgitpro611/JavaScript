@@ -1477,3 +1477,12 @@ console.log(item.previousElementSibling); // Previous element
 ✅ Useful when modifying nested structures like menus, forms, or tables.
 
 ✅ Improves performance by selecting elements efficiently.
+
+# prototype method
+ - A prototype in JavaScript is an object from which other objects inherit properties and methods.
+ > Key Points About JavaScript Prototypes:
+ - Prototype Chain: Every JavaScript object has an internal link to another object called its prototype. This forms a prototype chain that enables inheritance.
+- Prototype Property (prototype): Functions in JavaScript have a prototype property, which is used to set up inheritance.
+ > __proto__ vs. prototype:
+- prototype: Exists only on functions and is used to define properties and methods for instances.
+- __proto__: Exists on objects and points to the prototype from which the object inherits.
