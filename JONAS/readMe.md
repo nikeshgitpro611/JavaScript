@@ -1478,6 +1478,16 @@ console.log(item.previousElementSibling); // Previous element
 
 ✅ Improves performance by selecting elements efficiently.
 
+# Why Need constructor
+
+✅ Initializes object properties.
+
+✅ Enables default values and logic.
+
+✅ Allows inheritance with super().
+
+✅ Gives control over instance creation.
+
 # prototype method
  - A prototype in JavaScript is an object from which other objects inherit properties and methods.
  > Key Points About JavaScript Prototypes:
@@ -1486,3 +1496,29 @@ console.log(item.previousElementSibling); // Previous element
  > __proto__ vs. prototype:
 - prototype: Exists only on functions and is used to define properties and methods for instances.
 - __proto__: Exists on objects and points to the prototype from which the object inherits.
+
+# OOPS principal.
+The four main OOP principles are:
+
+1) Abstraction
+2) Encapsulation
+3) Polymorphism
+4) Inheritance (You didn't ask, but it's a key part of OOP)
+
+> **Encapsulation:** Bundles data and methods, restricting access to internal state.
+
+- Definition: Encapsulation is the bundling of data (attributes) and methods (functions) that operate on that data into a single unit, or class. It restricts direct access to some of the object's components, which can prevent the accidental modification of data
+
+**Access Modifiers:** JavaScript does not have traditional access modifiers like private or protected, but you can use closures or the new class field syntax with # to create private fields.
+
+**Getters and Setters:** You can define methods to access and update private data, allowing for validation or transformation of data.
+![alt text](image-3.png)
+> **Abstraction:** Hides complex implementation details, exposing only necessary parts.
+
+![alt text](image-2.png)
+> **Inheritance:** Allows a class to inherit properties and methods from another class.
+
+- ![alt text](image-1.png)
+> **Polymorphism:** Enables methods to behave differently based on the object they are acting upon.
+- A child class can over write method.it inherit a parent class
+![alt text](image.png)
