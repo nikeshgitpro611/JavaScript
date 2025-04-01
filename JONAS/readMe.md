@@ -1522,3 +1522,20 @@ The four main OOP principles are:
 > **Polymorphism:** Enables methods to behave differently based on the object they are acting upon.
 - A child class can over write method.it inherit a parent class
 ![alt text](image.png)
+
+# What is instants
+- The object(instants) are instantiated from class which function like blueprints
+![alt text](image-4.png)
+
+
+Note : -
+![alt text](image-5.png)
+
+
+# project Over View
+
+> user Stories
+
+✅ Log my run (location dist, time speed)
+
+> Feature
