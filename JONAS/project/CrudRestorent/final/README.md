@@ -23,6 +23,22 @@ If the call stack is empty:
 
 Repeats.
 
+> Call Stack
+- A stack that keeps track of the functions being called and executed.
+
+> Web APIs (Browser APIs)
+- Provided by the browser (or Node.js in a server environment) to handle asynchronous operations —    like setTimeout, fetch, or DOM events.
+
+> Callback Queue (Task Queue)
+- Holds the callbacks from Web APIs after they finish — waiting to be pushed to the call stack.
+
+> Microtask Queue
+- Holds promises, queueMicrotask, and MutationObserver callbacks. These are processed before the task queue in each loop cycle.
+
+> Event Loop
+- Continuously checks the call stack. If the stack is empty, it pushes the next task (from microtask queue first, then task queue) into the stack to run.
+
+
 
 2. What are the differences between var, let, and const? When would you use each?
 
