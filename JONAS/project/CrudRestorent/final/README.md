@@ -42,10 +42,32 @@ Repeats.
 
 2. What are the differences between var, let, and const? When would you use each?
 
+![alt text](image.png)
 3. How does JavaScript handle asynchronous operations under the hood?
 
+- JavaScript's event loop and its handling of asynchronous operations allow for efficient, non-blocking execution.
+- Understanding this mechanism is essential for developing responsive applications, as it enables the handling of multiple tasks without freezing the user interface.
+
+# The event loop:
+
+Waits for the call stack to be empty.
+
+Then runs all microtasks first.
+
+Then pulls one callback from the task queue and runs it.
+
+Repeats endlessly.
 4. What is the Temporal Dead Zone in ES6?
 
+let/const are hoisted but not initialized → TDZ applies
+
+```
+console.log(a); // ✅ undefined
+var a = 10;
+
+console.log(b); // ❌ ReferenceError
+let b = 20;
+```
 5. How does JavaScript's prototype chain work?
 
 
