@@ -1,6 +1,16 @@
 const months = [
-  "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
-  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
 ];
 
 // Selecting DOM elements
@@ -24,9 +34,22 @@ class Workout {
   }
 
   _setDescription() {
-    const month = months[this.date.getMonth()];
-    const day = this.date.getDate();
-    return `${this.type[0].toUpperCase() + this.type.slice(1)} on ${month} ${day}`;
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    this.description = `${this.type}`;
+    console.log(" this.description ", this.description);
   }
 }
 
@@ -37,7 +60,7 @@ class Running extends Workout {
     super(coords, distance, duration);
     this.cadence = cadence;
     this.calcPace();
-    this.description = this._setDescription();
+     this._setDescription();
   }
 
   calcPace() {
@@ -53,7 +76,7 @@ class Cycling extends Workout {
     super(coords, distance, duration);
     this.elevationGain = elevationGain;
     this.calcSpeed();
-    this.description = this._setDescription();
+    this._setDescription();
   }
 
   calcSpeed() {
@@ -61,9 +84,6 @@ class Cycling extends Workout {
     return this.speed;
   }
 }
-
-
-
 
 class App {
   #map;
@@ -78,9 +98,8 @@ class App {
 
   _getPosition() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        this._loadMap.bind(this),
-        () => alert("Could not get your position")
+      navigator.geolocation.getCurrentPosition(this._loadMap.bind(this), () =>
+        alert("Could not get your position")
       );
     }
   }
@@ -132,13 +151,11 @@ class App {
       workout = new Running([lat, lng], distance, duration, cadence);
       this.#workouts.push(workout);
       console.log("Workouts:", this.#workouts);
-  
+
       this._renderWorkoutMarker(workout);
       this._clearInputFields();
       this._renderWorkOut(workout);
-    } 
-    
-    else if (type === "cycling") {
+    } else if (type === "cycling") {
       const elevation = +inputElevation.value;
       if (!this._isValidInput(distance, duration, elevation)) {
         alert("Please enter positive numbers for all fields");
@@ -153,7 +170,6 @@ class App {
     this._renderWorkoutMarker(workout);
     this._renderWorkOut(workout);
     this._clearInputFields();
-
   }
 
   _renderWorkoutMarker(workout) {
@@ -173,17 +189,24 @@ class App {
   }
 
   _clearInputFields() {
-    inputDistance.value = inputDuration.value = inputCadence.value = inputElevation.value = "";
+    inputDistance.value =
+      inputDuration.value =
+      inputCadence.value =
+      inputElevation.value =
+        "";
   }
 
   _renderWorkOut(workout) {
-    console.log("workout : ", workout);
-    
+    // console.log("workout : ", workout);
 
-    let html = `<li class="workout workout--${workout.type}" data-id="${workout.id}">
+    let html = `<li class="workout workout--${workout.type}" data-id="${
+      workout.id
+    }">
     <h2 class="workout__title">${workout.description}</h2>
     <div class="workout__details">
-      <span class="workout__icon">${workout.type === "running" ? "🏃‍♂️" : "🚴‍♀️"}</span>
+      <span class="workout__icon">${
+        workout.type === "running" ? "🏃‍♂️" : "🚴‍♀️"
+      }</span>
       <span class="workout__value">${workout.distance}</span>
       <span class="workout__unit">km</span>
     </div>
