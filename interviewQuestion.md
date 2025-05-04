@@ -91,3 +91,57 @@ const users = [
 //   { id: 3, name: "Alice", email: "a@example.com" }
 // ]
 ```
+```
+const orders = [
+  { user: "Alice", total: 30 },
+  { user: "Bob", total: 20 },
+  { user: "Alice", total: 70 },
+  { user: "Bob", total: 10 },
+  { user: "Charlie", total: 50 }
+];
+
+// Group totals by user and return:
+// { Alice: 100, Bob: 30, Charlie: 50 }
+```
+```
+const nested = {
+  user: {
+    id: 1,
+    info: {
+      name: "Alice",
+      email: "a@example.com"
+    }
+  },
+  meta: {
+    active: true
+  }
+};
+
+// Write a function that returns all keys in dot notation.
+// Expected Output:
+// ["user.id", "user.info.name", "user.info.email", "meta.active"]
+```
+```
+const people = [
+  { name: "Alice", hobbies: ["Reading", "Music"] },
+  { name: "Bob", hobbies: ["Music", "Sports"] },
+  { name: "Charlie", hobbies: ["Reading", "Chess"] }
+];
+
+// Return an object counting how many times each hobby appears:
+// { Reading: 2, Music: 2, Sports: 1, Chess: 1 }
+```
+```
+const people = [
+  { id: 1, name: "Alice", role: "admin" },
+  { id: 2, name: "Bob", role: "user" },
+  { id: 3, name: "Alice", role: "admin" },
+  { id: 4, name: "Alice", role: "guest" }
+];
+
+// Find all entries that have same `name` and `role`.
+// Expected Output: [
+//   { id: 1, name: "Alice", role: "admin" },
+//   { id: 3, name: "Alice", role: "admin" }
+// ]
+```
