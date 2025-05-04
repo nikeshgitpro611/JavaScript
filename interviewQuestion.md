@@ -30,3 +30,64 @@ const users = [
 // }
 
 ```
+
+```
+const responses = [
+  { status: "success" },
+  { status: "fail" },
+  { status: "success" },
+  { status: "pending" },
+  { status: "fail" },
+  { status: "success" }
+];
+
+// Write a function to count how many times each status appears.
+// Expected Output:
+// {
+//   success: 3,
+//   fail: 2,
+//   pending: 1
+// }
+```
+
+
+```
+const records = [
+  { id: 1, name: "Amy" },
+  { id: 2, name: "Bob" },
+  { id: 3, name: "Amy" },
+  { id: 4, name: "Dan" },
+  { id: 2, name: "Bob" } // duplicate id and name
+];
+
+// Return a list of users (name+id) that appear more than once.
+// Expected Output: ["Bob-2"]
+```
+```
+const input = {
+  name: ["Alice", "Bob"],
+  age: [25, 30],
+  city: ["NY", "LA"]
+};
+
+// Write a function that transforms it into:
+// [
+//   { name: "Alice", age: 25, city: "NY" },
+//   { name: "Bob", age: 30, city: "LA" }
+// ]
+```
+```
+const users = [
+  { id: 1, name: "Alice", email: "a@example.com" },
+  { id: 2, name: "Bob", email: "b@example.com" },
+  { id: 3, name: "Alice", email: "a@example.com" },
+  { id: 4, name: "Alice", email: "alice@fake.com" }
+];
+
+// Return an array of objects that have identical `name` and `email` combinations.
+// Expected Output:
+// [
+//   { id: 1, name: "Alice", email: "a@example.com" },
+//   { id: 3, name: "Alice", email: "a@example.com" }
+// ]
+```
