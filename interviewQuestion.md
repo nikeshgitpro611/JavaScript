@@ -145,3 +145,77 @@ const people = [
 //   { id: 3, name: "Alice", role: "admin" }
 // ]
 ```
+# What is Object.fromEntries()
+
+> Object.fromEntries() is a JavaScript method that takes an iterable of key-value pairs (like an array of arrays) and transforms it into an object.
+
+```
+Array Of Array
+
+const entries = [
+  ['name', 'John'],
+  ['age', 30],
+  ['country', 'USA']
+];
+
+//{ name: 'John', age: 30, country: 'USA' }
+```
+
+```
+Transforming an Object with Object.entries and Object.fromEntries
+Converting Map data structures to plain objects.
+
+const user = {
+  name: 'Alice',
+  age: 25
+};
+//{ name: 'ALICE', age: '25' }
+
+Solution : --
+const user = {
+  name: 'Alice',
+  age: 25
+};
+//{ name: 'John', age: 30, country: 'USA' }
+
+const result = (entries) => {
+  // console.log(entries)
+  return Object.fromEntries(
+    Object.entries(entries).map(([key,val]) => [key, String(val).toLocaleUpperCase()])
+  )
+};
+
+console.log('result Pass Concept : ',  result(user))
+```
+```
+const user = {
+  name: 'Alice',
+  age: 25,
+  details: { city: 'New York' },
+};
+
+// { name: 'ALICE', details: { city: 'NEW YORK' } }
+
+```
+
+```
+by reduce method
+const nestedArray = [[1, 2], [3, 4], [5, 6]];
+// Output: [1, 2, 3, 4, 5, 6];
+```
+
+```
+by reduce method
+const products = [
+  { name: "Laptop", price: 1000 },
+  { name: "Phone", price: 500 },
+  { name: "Tablet", price: 300 }
+];
+
+// Output: 1800
+```
+```
+Remove Duplicate by reduce method
+const numbers = [1, 2, 2, 3, 4, 4, 5];
+//Output: [1, 2, 3, 4, 5]
+```
