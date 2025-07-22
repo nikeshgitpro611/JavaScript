@@ -218,4 +218,24 @@ const products = [
 Remove Duplicate by reduce method
 const numbers = [1, 2, 2, 3, 4, 4, 5];
 //Output: [1, 2, 3, 4, 5]
+
+const arr = [1, 2, 3, 4, 5];
+//output : [[1,2], [3,4], [5]];
+
+const arr = [1,2,3,4,5,6,7,8,9];
+//output : [[1,2,3,4],[5,6,7,8],[9]]
+
+const arr = [1,2,3,49,7,9];
+//output : 4997321
 ```
+
+> # Topic : Reduce
+```
+const arr = [{id: 1, name: 'A'}, {id: 2, name: 'B'}];
+// Output: {1: 'A', 2: 'B'}
+
+const input = ['a', 'b', 'a', 'c', 'b'];
+// Output: { a: 2, b: 2, c: 1 }
+
+const nested = [[1, 2], [3, 4], [5]];
+// Output: [1, 2, 3, 4, 5]

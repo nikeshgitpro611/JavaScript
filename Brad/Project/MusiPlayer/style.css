@@ -139,3 +139,34 @@ body {
   width: 0%;
   transition: width 0.1s linear;
 }
+
+#volume-control {
+  width: 150px;
+  height: 6px;
+  -webkit-appearance: none;
+  background: #ddd;
+  border-radius: 5px;
+  outline: none;
+  margin: 0 10px;
+}
+
+#volume-control::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #007bff;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+#volume-control::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #007bff;
+  cursor: pointer;
+  border: none;
+}
