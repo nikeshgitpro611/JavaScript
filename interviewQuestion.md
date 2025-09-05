@@ -311,6 +311,18 @@ myPromise
 
 **Promise.race([...])** → returns first settled promise (resolve or reject).
 
-**Promise.allSettled([...])** → waits for all, returns success + failure results.
+**Promise.allSettled([...])** → waits for all, returns success + failure results in [{
+    "status": "fulfilled",
+    "value": "C done"
+  }].
 
 **Promise.any([...])** → returns first fulfilled promise (ignores rejects).
+
+```
+const promiseA = Promise.resolve("A done");
+const promiseB = Promise.resolve("B done");
+const promiseC = Promise.resolve("C done");
+
+
+Promise.**race**([promiseA,promiseB,promiseC]).then(data => console.log(data))
+```
