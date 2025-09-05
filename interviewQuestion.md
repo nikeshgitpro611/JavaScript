@@ -340,7 +340,7 @@ Promise.**race**([promiseA,promiseB,promiseC]).then(data => console.log(data))
 
 🔹 Basic Promise Questions
 
-1. What is a Promise in JavaScript?
+# 1. What is a Promise in JavaScript?
 
 it's Js object that eventually handling resolve and reject task in asynchronous manner.
 
@@ -364,7 +364,7 @@ const myPromise = new Promise((resolve, reject) => {
 
 ;
 
-2. What’s the difference between .then(), .catch(), and .finally()?
+# 2. What’s the difference between .then(), .catch(), and .finally()?
 
 **Then**
 
@@ -384,7 +384,7 @@ Runs no matter what (fulfilled or rejected).
 
 Often used for cleanup (e.g., hiding a loading spinner).
 
-3. .catch() vs try/catch with async/await.
+# 3. .catch() vs try/catch with async/await.
 
 **Use .catch() →** when chaining simple promises or doing one-off async operations.
 
@@ -431,7 +431,7 @@ showOrders();
 
 🔹 Intermediate Promise Questions
 
-4. What is the difference between Promise.all, Promise.race, Promise.any, and Promise.allSettled?
+# 4. What is the difference between Promise.all, Promise.race, Promise.any, and Promise.allSettled?
 
 ✅ Quick Comparison Table
 
