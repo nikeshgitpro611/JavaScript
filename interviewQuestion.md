@@ -435,15 +435,13 @@ showOrders();
 
 ✅ Quick Comparison Table
 
-**Method     	   When it Resolves   	When it Rejects	    Use Case**
+| Method              | When it Resolves | When it Rejects | Use Case |
+|---------------------|------------------|-----------------|----------|
+| **Promise.all**     | All succeed      | Any fail        | Run tasks in parallel, but need all results. |
+| **Promise.race**    | First settles    | First rejects   | Timeout handling, or “first response wins”. |
+| **Promise.any**     | First success    | All fail        | Need at least one success (fallbacks). |
+| **Promise.allSettled** | After all settle | Never rejects   | Collecting all results (success + failure). |
 
-**Promise.all**   All succeed	         Any fail	          Run tasks in parallel, but need all results.
-
-**Promise.race**	 First settles	      First rejects	      Timeout handling, or “first response wins”.
-
-**Promise.any**	   First success	      All fail	          Need at least one success (fallbacks).
-
-**Promise.allSettled**	After all settle	Never rejects	    Collecting all results (success + failure).
 
 What happens if one promise fails inside Promise.all?
 
