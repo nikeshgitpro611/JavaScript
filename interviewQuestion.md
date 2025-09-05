@@ -239,3 +239,78 @@ const input = ['a', 'b', 'a', 'c', 'b'];
 
 const nested = [[1, 2], [3, 4], [5]];
 // Output: [1, 2, 3, 4, 5]
+
+const nums = [1, 2, 3, 2, 4, 1, 5];
+// [1, 2, 3, 4, 5] remove duplicate
+
+```
+> # map and reduce
+
+```
+const data = [[1, 2], [3, 4, 5], [6]];
+// Goal: Return[2, 4, 6, 8, 10, 12]
+
+const students = [
+  { name: "John", scores: [70, 80, 90] },
+  { name: "Jane", scores: [85, 95, 100] },
+  { name: "Jack", scores: [60, 65, 70] }
+];
+
+Goal: Return "Jane".
+```
+
+# Promise Concept
+- it's asynchronous
+✅ resolve (success, returns a value)
+
+❌ reject (failure, returns an error)
+
+⏳ be in pending state until it completes
+
+- States of a Promise
+
+**Pending** → initial state, not resolved or rejected.
+
+**Fulfilled** → operation completed successfully (resolve).
+
+**Rejected** → operation failed (reject).
+
+```
+Basic Syntax
+const myPromise = new Promise((resolve, reject) => {
+  const success = true;
+
+  if (success) {
+    resolve("Data fetched successfully!");
+  } else {
+    reject("Error: Something went wrong");
+  }
+});
+
+// Consuming the promise
+myPromise
+  .then((result) => {
+    console.log("✅ Success:", result);
+  })
+  .catch((error) => {
+    console.error("❌ Error:", error);
+  })
+  .finally(() => {
+    console.log("🔄 Operation completed");
+  });
+
+```
+
+> 🔹 Types of Promise usage
+
+**Promise.resolve(value)** → instantly resolves with a value.
+
+**Promise.reject(error)**  → instantly rejects with an error.
+
+**Promise.all([...])** → runs multiple promises in parallel, fails if any reject.
+
+**Promise.race([...])** → returns first settled promise (resolve or reject).
+
+**Promise.allSettled([...])** → waits for all, returns success + failure results.
+
+**Promise.any([...])** → returns first fulfilled promise (ignores rejects).

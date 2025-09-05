@@ -50,17 +50,39 @@ class User {
   }
 }
 
-const results =  new User("John", "Doe");
+const results = new User("John", "Doe");
 console.log(results.deposit(500));
 console.log(results.deposit(400));
 console.log(results.withdraw(200));
 
-
 //Task -02
-// Implement a class named ArrayUtils that cannot be instantiated 
-// and contains static methods average and max. If the class is instantiated throw an error 
+// Implement a class named ArrayUtils that cannot be instantiated
+// and contains static methods average and max. If the class is instantiated throw an error
 // with the message 'ArrayUtils cannot be instantiated.'
-// The average method should return the average of an array of numbers. 
+// The average method should return the average of an array of numbers.
 // If the array is empty, throw an error with the message 'Array cannot be empty.'
-// The max method should return the largest number from an array of numbers. 
+// The max method should return the largest number from an array of numbers.
 // You can assume you will always get passed an arrray of numbers
+
+// Solution -02
+class ArrayUtils {
+    constructor(){
+        throw new Error("ArrayUtils cannot be instantiated.")
+    }
+    
+    static average (arr){
+        if(arr.length <= 0 ) {
+            throw new Error( 'Array cannot be empty.')
+        }
+        
+         const AccumulatedVal= arr.reduce((acc, val) => acc + val, 0)
+         
+         return AccumulatedVal / arr.length;
+    }
+    static max (arr){
+        return Math.max(...arr)
+    }
+}
+
+console.log(ArrayUtils.average([1,2,3,4,5]))
+console.log(ArrayUtils.max([1,2,3,4,5]));
