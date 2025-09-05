@@ -435,17 +435,56 @@ showOrders();
 
 ✅ Quick Comparison Table
 
-| Method              | When it Resolves | When it Rejects | Use Case |
-|---------------------|------------------|-----------------|----------|
-| **Promise.all**     | All succeed      | Any fail        | Run tasks in parallel, but need all results. |
-| **Promise.race**    | First settles    | First rejects   | Timeout handling, or “first response wins”. |
-| **Promise.any**     | First success    | All fail        | Need at least one success (fallbacks). |
-| **Promise.allSettled** | After all settle | Never rejects   | Collecting all results (success + failure). |
+| Method                 | When it Resolves | When it Rejects | Use Case                                     |
+| ---------------------- | ---------------- | --------------- | -------------------------------------------- |
+| **Promise.all**        | All succeed      | Any fail        | Run tasks in parallel, but need all results. |
+| **Promise.race**       | First settles    | First rejects   | Timeout handling, or “first response wins”.  |
+| **Promise.any**        | First success    | All fail        | Need at least one success (fallbacks).       |
+| **Promise.allSettled** | After all settle | Never rejects   | Collecting all results (success + failure).  |
 
+# 5. What happens if one promise fails inside Promise.all?
 
-What happens if one promise fails inside Promise.all?
+Promise.all() waits for all promises to resolve successfully.
 
-What’s the difference between synchronous and asynchronous code execution?
+If any one promise rejects, the whole Promise.all() immediately rejects with that error.
+
+The other promises may still be running in the background, but their results are ignored.
+
+# 6. What’s the difference between synchronous and asynchronous code execution?
+
+1. Synchronous Code Execution
+
+👉 Code runs line by line, in order.
+
+👉 Each line waits for the previous one to finish before running.
+
+```
+console.log("Start");
+
+for (let i = 0; i < 3; i++) {
+  console.log("Loop:", i);
+}
+
+console.log("End");
+```
+
+| Feature             | Synchronous                           | Asynchronous                                    |
+| ------------------- | ------------------------------------- | ----------------------------------------------- |
+| **Execution order** | Line by line (blocking)               | Can skip waiting tasks and continue             |
+| **Blocking**        | Yes (next line waits)                 | No (non-blocking)                               |
+| **Use case**        | Simple calculations, sequential logic | Network calls, file I/O, timers, user input     |
+| **Example**         | Loops, math                           | `setTimeout`, `fetch`, `Promise`, `async/await` |
+
+```
+Async
+console.log("Start");
+
+setTimeout(() => {
+  console.log("Async Task Finished");
+}, 2000);
+
+console.log("End");
+```
 
 What is the difference between callbacks and Promises?
 
