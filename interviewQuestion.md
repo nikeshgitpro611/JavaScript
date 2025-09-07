@@ -486,23 +486,163 @@ setTimeout(() => {
 console.log("End");
 ```
 
-What is the difference between callbacks and Promises?
+# 7. What is the difference between callbacks and Promises?
 
-What is the difference between microtask queue and macrotask queue in event loop?
+```
+function fetchData(callback) {
+  setTimeout(() => {
+    callback(null, "Data received"); // success
+    // callback("Error happened", null); // failure
+  }, 1000);
+}
 
-Promises use the microtask queue.
+fetchData((err, data) => {
+  if (err) {
+    console.error("Error:", err);
+  } else {
+    console.log("Callback Result:", data);
+  }
+});
+```
+
+| Feature            | Callbacks                               | Promises                                        |
+| ------------------ | --------------------------------------- | ----------------------------------------------- |
+| **Definition**     | Function passed into another function   | Object representing future success/failure      |
+| **Readability**    | Can lead to nested “callback hell”      | Cleaner chaining with `.then()` / `async/await` |
+| **Error Handling** | Must handle errors manually in callback | Built-in `.catch()` for errors                  |
+| **Chaining**       | Hard to chain async tasks               | Easy chaining with `.then()`                    |
+| **Modern Usage**   | Older style, still used in some APIs    | Standard in modern JS, works with `async/await` |
+
+# 8. What is the difference between microtask queue and macrotask queue in event loop?
+
+Event Loop Basics
+
+JavaScript is **single-threaded →**it executes one thing at a time.
+
+When async tasks happen, they’re scheduled into queues, and the **event loop decides when to run them.**
+
+There are two main queues:
+
+Macrotask Queue (a.k.a. Task Queue)
+
+Microtask Queue
+
+**Promises use the microtask queue.**
+
+1. Macrotask Queue
+
+Contains tasks like:
+
+setTimeout
+
+setInterval
+
+setImmediate (Node.js)
+
+I/O events (e.g., mouse clicks, network requests)
+
+👉 Each macrotask runs after the current script finishes, then the event loop moves on.
+
+2. Microtask Queue
+
+Contains tasks like:
+
+Promise.then / catch / finally callbacks
+
+queueMicrotask()
+
+MutationObserver
+
+👉 Microtasks are executed immediately after the current operation, before any macrotask.
+
+Execution Order
+
+Run synchronous code (top of the call stack).
+
+Process all microtasks (in order).
+
+Run the next macrotask.
+
+Repeat.
+
+```
+console.log("Start");
+
+setTimeout(() => console.log("Macrotask: setTimeout"), 0);
+
+Promise.resolve()
+  .then(() => console.log("Microtask: Promise.then"));
+
+console.log("End");
+
+output :
+Start
+End
+Microtask: Promise.then
+Macrotask: setTimeout
+```
 
 🔹 Advanced Promise Questions
 
-What happens if you call .then() multiple times on the same Promise?
+# 9. What happens if you call .then() multiple times on the same Promise?
 
-They run independently once resolved.
+Multiple .then() calls on the same promise → all callbacks run with the same result.
 
-How do you cancel a Promise?
+```
+const p = Promise.resolve(5);
+
+p.then(x => console.log("First:", x)); //5
+p.then(x => console.log("Second:", x)); // 5
+```
+
+Chained .then() calls → results flow step by step, each .then() returning a new Promise.
+
+```
+const p = Promise.resolve(5);
+
+p.then(x => x * 2)
+ .then(x => x * 3)
+ .then(x => console.log("Chained result:", x));
+
+ output :30
+```
+
+# 10. How do you cancel a Promise?
+
+by AbortController in fetch
+
+```
+const controller = new AbortController();
+const signal = controller.signal;
+
+fetch("https://jsonplaceholder.typicode.com/todos/1", { signal })
+  .then(response => response.json())
+  .then(data => console.log("Data:", data))
+  .catch(err => {
+    if (err.name === "AbortError") {
+      console.log("Fetch aborted!");
+    } else {
+      console.error("Error:", err);
+    }
+  });
+
+// Cancel after 100ms
+setTimeout(() => controller.abort(), 100);
+```
+
+🎯 Summary
+
+Autocomplete / Search → cancel outdated requests.
+
+Timeouts → stop slow operations.
+
+React / UI Cleanup → avoid updating unmounted components.
+
+Background tasks → save resources if no longer needed.
 
 Not directly possible → must use AbortController or custom logic.
 
-What is the difference between Promise.resolve() and new Promise(resolve => resolve(...))?
+# 11. What is the difference between Promise.resolve() and new Promise(resolve => resolve(...))?
 
 What will this code print?
 
@@ -549,3 +689,141 @@ What’s the difference between Promise.all and Promise.allSettled in error hand
 What’s the difference between concurrency and parallelism in JavaScript?
 
 Implement a simple Promise.retry(fn, retries) function.
+
+🟡 Medium Level (Core JavaScript + Browser API)
+
+# Explain how JavaScript closures work and provide an example.
+
+A closure in JavaScript is a feature where an inner function has access to variables from an outer function
+
+When a function is defined inside another function, it retains access to the outer function’s variables.
+
+```
+const outer = () => {
+    let c = 0
+    return () => {
+        c++
+        console.log(`Increased ${c}`)
+    }
+}
+
+let deff = outer();
+deff()
+deff()
+deff()
+```
+
+# What is hoisting and how does it affect variable/function declarations?
+
+```
+console.log(myFunc); // Output: undefined
+myFunc(); // TypeError: myFunc is not a function
+var myFunc = function() {
+    console.log('Function Expression');
+};
+myFunc(); // Output: Function Expression
+```
+
+| Concept             | Description                                              |
+| ------------------- | -------------------------------------------------------- |
+| Scope               | Defines where a variable can be accessed.                |
+| Lexical Environment | The context in which variables and functions are stored. |
+| Scope Chain         | The hierarchy used to resolve variables.                 |
+| Closures            | Functions retaining access to outer scopes.              |
+
+# What is the difference between null and undefined?
+
+let x = null; // Explicitly set to null
+console.log(x); // Output: null
+
+🔵 Hard Level (Asynchronous Programming, Prototypes, Patterns)
+
+# Explain how prototypal inheritance works in JavaScript.
+
+# What are modules in JavaScript and how are they different between ES6 and CommonJS?
+
+A module is a reusable block of code that encapsulates related variables, functions, or classes. Modules help organize code, avoid naming conflicts, and manage dependencies by exporting and importing functionality across different files.
+
+✅ CommonJS Modules (CJS)
+
+**Characteristics:**
+
+Used by default in Node.js.
+
+Synchronous loading.
+
+Uses require() to import and module.exports or exports to export.
+
+✅ ES6 Modules (ESM)
+
+Characteristics:
+
+Official standard for modern JavaScript.
+
+Supports static analysis and tree shaking.
+
+Uses import and export.
+
+Asynchronous loading in browsers.
+
+```
+trest.js file
+export const add = (a, b) => a + b;
+export const subtract = (a, b) => a - b;
+
+result.js file
+
+import { add, subtract } from './math.mjs';
+
+console.log(add(5, 3));      // 8
+console.log(subtract(5, 3)); // 2
+```
+
+| Feature                   | ES6 Modules (ESM)             | CommonJS Modules (CJS)          |
+| ------------------------- | ----------------------------- | ------------------------------- |
+| **Syntax**                | `import` / `export`           | `require()` / `module.exports`  |
+| **Loading**               | Asynchronous                  | Synchronous                     |
+| **Standardization**       | Official standard             | Node.js-specific implementation |
+| **Use in Browsers**       | Supported natively            | Needs bundlers (like Webpack)   |
+| **Static Analysis**       | Possible (helps tree shaking) | Not possible at load time       |
+| **Circular Dependencies** | Better handled                | Can cause issues                |
+
+
+
+# How does JavaScript’s call stack work, and how can recursion lead to stack overflow?
+
+Explain the difference between shallow copy and deep copy.
+
+How does debouncing and throttling work? Provide use cases.
+
+What is the difference between event bubbling and event capturing?
+
+Explain how memory leaks occur in JavaScript and how to avoid them.
+
+What are symbols in JavaScript and how are they used?
+
+What’s the difference between synchronous and asynchronous iteration (for..of vs for await..of)?
+
+Explain how you can use closures for data encapsulation and privacy.
+
+🟣 Advanced Level (Deep Internals, Design Patterns, Performance)
+
+How does JavaScript’s garbage collection work?
+
+Explain the differences between tasks, microtasks, and macrotasks in the event loop.
+
+How would you implement a publish-subscribe pattern in JavaScript?
+
+Explain how generators and iterators work and provide an example.
+
+How can you handle errors in asynchronous code using async/await?
+
+What are WeakMap and WeakSet, and when should you use them?
+
+How does JavaScript handle concurrency, given that it's single-threaded?
+
+Explain function currying and partial application with examples.
+
+How can you optimize JavaScript code for performance in large-scale applications?
+
+How would you implement a memoization function and when is it useful?
