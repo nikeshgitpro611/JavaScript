@@ -788,19 +788,85 @@ console.log(subtract(5, 3)); // 2
 | **Static Analysis**       | Possible (helps tree shaking) | Not possible at load time       |
 | **Circular Dependencies** | Better handled                | Can cause issues                |
 
-
-
 # How does JavaScript’s call stack work, and how can recursion lead to stack overflow?
 
-Explain the difference between shallow copy and deep copy.
+The call stack in JavaScript is a mechanism that keeps track of function execution. It’s a stack data structure that follows the Last In, First Out (LIFO) principle.
 
-How does debouncing and throttling work? Provide use cases.
+When a function is called:
 
-What is the difference between event bubbling and event capturing?
+It’s added (pushed) to the top of the stack.
 
-Explain how memory leaks occur in JavaScript and how to avoid them.
+The function executes.
 
-What are symbols in JavaScript and how are they used?
+When the function finishes, it’s removed (popped) from the stack.
+
+If one function calls another, the new function is added to the top, and when it’s done, control goes back to the previous one.
+
+✅ What is Recursion?
+
+Recursion is when a function calls itself either directly or indirectly. It’s useful for solving problems that can be broken into smaller sub problems, like factorials or traversing trees.
+
+```
+function countdown(n) {
+    if (n <= 0) {
+        console.log('Done!');
+        return;
+    }
+    console.log(n);
+    countdown(n - 1); // recursive call
+}
+
+countdown(5);
+```
+
+# Explain the difference between shallow copy and deep copy.
+
+# How does debouncing and throttling work? Provide use cases.
+
+Debouncing is great for actions that should only happen when the user stops interacting, like typing or resizing.
+
+Throttling is better when you need to ensure a function runs regularly during continuous activity, like scrolling or animation frames.
+
+| Aspect          | Debouncing                                   | Throttling                                     |
+| --------------- | -------------------------------------------- | ---------------------------------------------- |
+| When it runs    | After the event has stopped firing           | At regular intervals while the event is firing |
+| Controls timing | Waits until events stop                      | Runs at intervals during events                |
+| Use case        | Avoid excess calls when user is still active | Spread out execution to improve performance    |
+| Example events  | Input fields, search boxes                   | Scroll, resize, mouse movement                 |
+
+# What is the difference between event bubbling and event capturing?
+
+| Feature          | Event Capturing                 | Event Bubbling                 |
+| ---------------- | ------------------------------- | ------------------------------ |
+| Direction        | From outer element → target     | From target → outer element    |
+| Phase            | Capturing phase                 | Bubbling phase                 |
+| Trigger order    | Happens before the target event | Happens after the target event |
+| Default behavior | Rarely used unless specified    | Default behavior in browsers   |
+
+# Explain how memory leaks occur in JavaScript and how to avoid them.
+
+A memory leak in JavaScript occurs when memory that is no longer needed by an application is not released back to the system, causing the program to consume more memory than necessary. Over time, this can lead to performance degradation, slowdowns, or crashes, especially in long-running applications like single-page apps (SPAs).
+
+### Detecting and Debugging Memory Leaks
+
+**Browser DevTools:**
+
+Use Chrome’s Memory tab to take heap snapshots and identify retained objects.
+Record allocation timelines to spot growing memory usage.
+
+**Node.js:**
+
+Use tools like heapdump or node --inspect to analyze memory.
+
+Libraries like memwatch-next can detect leaks.
+
+**Manual Inspection:**
+
+Check for unremoved event listeners, uncleared timers, or persistent references.
+
+Ensure cleanup in frameworks (e.g., React’s useEffect cleanup).
+
+# What are symbols in JavaScript and how are they used?
 
 What’s the difference between synchronous and asynchronous iteration (for..of vs for await..of)?
 
