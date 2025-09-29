@@ -1361,7 +1361,8 @@ console.log(scores); // [0,0,0,0,0]
 1. let test = [1,23];
 2. let arr = new Array(5).fill("A");
 
-# Array.from() 
+# Array.from()
+
 - The Array.from() method creates a new array from an iterable or array-like object. It allows transformations using a mapping function.
 - The return type of Array.from() is a new array.
 
@@ -1385,15 +1386,20 @@ console.log(arr.filter(Boolean));
 Method : 2
 
 ```
+
 # Math.trunc().
+
 - that removes the decimal portion of a number and returns only the integer part.
+
 ```
 console.log(Math.trunc(4.9));   // 4
 console.log(Math.trunc(-4.9));  // -4
 console.log(Math.trunc(0.99));  // 0
 console.log(Math.trunc(-0.99)); // -0 (same as 0)
 ```
+
 # Important method of Array H.w
+
 ![alt text](project/bankits/Img/image.png)
 ![alt text](project/bankits/Img/image1.png)
 
@@ -1413,14 +1419,18 @@ const dateTime = new Intl.DateTimeFormat("en-US",option).format(new Date());
 
 labelDate.textContent = dateTime;
 ```
+
 # Q// What is DOM
+
 - Allow us make it Js interact wit your browser.
 - Dom tree generate HTML document which we can interact with.
 - it have capability to write modified html documents which we can interact
-![alt text](Snnipet/image1.png)
+  ![alt text](Snnipet/image1.png)
 
 # What is Event Delegation?
+
 - Event delegation is a JavaScript pattern that allows you to handle events efficiently by assigning a single event listener to a parent element instead of adding listeners to multiple child elements. This takes advantage of event bubbling, where an event propagates from the target element up to its ancestors.
+
 ```
 document.getElementById("parent").addEventListener("click", function (event) {
     if (event.target.classList.contains("child-button")) {
@@ -1441,6 +1451,7 @@ document.querySelector('.nav').addEventListener('click', (e) => {
   }
 })
 ```
+
 ✅ Handles dynamic elements
 
 ✅ Reduces memory usage
@@ -1448,23 +1459,28 @@ document.querySelector('.nav').addEventListener('click', (e) => {
 ✅ Simplifies code management
 
 # What is DOM Traversing?
+
 - traversing refers to navigating through the elements (nodes) of a web page to find, modify, or interact with them using JavaScript. This is useful when you need to move between parent, child, and sibling elements dynamically.
 
 1. Moving Up (Parent Elements)
+
 - ### parentElement → Gets the direct parent of an element.
 - ### closest(selector) → Finds the nearest ancestor that matches the selector.
+
 ```
 const child = document.querySelector(".child");
 console.log(child.parentElement); // Logs the parent element
 ```
+
 2. Moving Down (Child Elements)
+
 - ### children → Gets all direct children of an element (returns an HTMLCollection).
 - ### querySelector / querySelectorAll → Finds specific children.
 - ### firstElementChild / lastElementChild → Access first or last child.
 
 3. Moving Sideways (Sibling Elements)
-previousElementSibling → Gets the previous sibling.
-nextElementSibling → Gets the next sibling.
+   previousElementSibling → Gets the previous sibling.
+   nextElementSibling → Gets the next sibling.
 
 ```
 const item = document.querySelector(".active");
@@ -1489,21 +1505,23 @@ console.log(item.previousElementSibling); // Previous element
 ✅ Gives control over instance creation.
 
 # prototype method
- - A prototype in JavaScript is an object from which other objects inherit properties and methods.
- > Key Points About JavaScript Prototypes:
- - Prototype Chain: Every JavaScript object has an internal link to another object called its prototype. This forms a prototype chain that enables inheritance.
+
+- A prototype in JavaScript is an object from which other objects inherit properties and methods.
+  > Key Points About JavaScript Prototypes:
+- Prototype Chain: Every JavaScript object has an internal link to another object called its prototype. This forms a prototype chain that enables inheritance.
 - Prototype Property (prototype): Functions in JavaScript have a prototype property, which is used to set up inheritance.
- > __proto__ vs. prototype:
+  > **proto** vs. prototype:
 - prototype: Exists only on functions and is used to define properties and methods for instances.
-- __proto__: Exists on objects and points to the prototype from which the object inherits.
+- **proto**: Exists on objects and points to the prototype from which the object inherits.
 
 # OOPS principal.
+
 The four main OOP principles are:
 
-1) Abstraction
-2) Encapsulation
-3) Polymorphism
-4) Inheritance (You didn't ask, but it's a key part of OOP)
+1. Abstraction
+2. Encapsulation
+3. Polymorphism
+4. Inheritance (You didn't ask, but it's a key part of OOP)
 
 > **Encapsulation:** Bundles data and methods, restricting access to internal state.
 
@@ -1513,24 +1531,25 @@ The four main OOP principles are:
 
 **Getters and Setters:** You can define methods to access and update private data, allowing for validation or transformation of data.
 ![alt text](image-3.png)
+
 > **Abstraction:** Hides complex implementation details, exposing only necessary parts.
 
 ![alt text](image-2.png)
+
 > **Inheritance:** Allows a class to inherit properties and methods from another class.
 
 - ![alt text](image-1.png)
-> **Polymorphism:** Enables methods to behave differently based on the object they are acting upon.
+  > **Polymorphism:** Enables methods to behave differently based on the object they are acting upon.
 - A child class can over write method.it inherit a parent class
-![alt text](image.png)
+  ![alt text](image.png)
 
 # What is instants
-- The object(instants) are instantiated from class which function like blueprints
-![alt text](image-4.png)
 
+- The object(instants) are instantiated from class which function like blueprints
+  ![alt text](image-4.png)
 
 Note : -
 ![alt text](image-5.png)
-
 
 # project Over View
 
@@ -1539,3 +1558,51 @@ Note : -
 ✅ Log my run (location dist, time speed)
 
 > Feature
+
+# Event loop
+
+The event loop in JavaScript is the mechanism that allows JavaScript (which is single-threaded) to handle asynchronous tasks like timers, API calls, promises, and DOM events without blocking the main thread.
+
+`"Start" and "End" → run synchronously on the call stack.`
+
+`Promise.then → microtask queue (runs immediately after sync code).`
+
+`setTimeout → callback queue (runs later).`
+
+🔑 Key Concepts
+
+**Call Stack**
+
+Where synchronous code runs line by line.
+
+If a function is called, it’s pushed onto the stack; when finished, it’s popped off.
+
+**Web APIs (Browser APIs / Node APIs)**
+
+Things like setTimeout, fetch, or event listeners are handled outside the call stack by the browser/Node runtime.
+
+**Callback/Task Queue (Message Queue)**
+
+When async tasks finish (like a timer), their callbacks are put in a queue, waiting to run.
+
+**Microtask Queue**
+
+Promises (.then, catch, finally) and MutationObserver callbacks go here.
+
+Microtasks have higher priority than normal callbacks.
+
+Event Loop
+
+Continuously checks if the call stack is empty.
+
+If empty → takes tasks from the microtask queue first, then the callback queue, and pushes them to the stack.
+
+✅ In Short
+
+The event loop ensures JavaScript can:
+
+Execute synchronous code immediately.
+
+Defer asynchronous code to run later (in order of priority).
+
+Avoid blocking the main thread, making apps responsive.
