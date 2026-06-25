@@ -1,3 +1,66 @@
+### Basic JavaScript Interview Questions
+
+  ## What is Scope?
+  
+  Scope is a mechanism that determines where variables (var, let, and const) are accessible or visible in a program.
+
+### Types of Scope
+
+#### 1. Global Scope
+
+Variables declared outside of any function or block are globally scoped and can be accessed from anywhere in the program.
+
+```javascript
+let company = "Toyota";
+
+function showCompany() {
+  console.log(company);
+}
+
+showCompany(); // Toyota
+console.log(company); // Toyota
+```
+
+#### 2. Function Scope
+
+Variables declared with `var` inside a function are function-scoped and can only be accessed within that function.
+
+```javascript
+function displayName() {
+  var name = "Nikesh";
+  console.log(name); // Nikesh
+}
+
+displayName();
+console.log(name); // ReferenceError
+```
+
+#### 3. Block Scope
+
+Variables declared with `let` and `const` inside a block `{}` are block-scoped and can only be accessed within that block.
+
+```javascript
+if (true) {
+  let age = 25;
+  const city = "Delhi";
+  console.log(age);  // 25
+  console.log(city); // Delhi
+}
+
+console.log(age);  // ReferenceError
+console.log(city); // ReferenceError
+```
+
+### Interview Definition
+
+Scope determines the accessibility and visibility of variables in JavaScript.
+
+* Global Scope: Accessible throughout the program.
+* Function Scope: `var` is accessible only within the function where it is declared.
+* Block Scope: `let` and `const` are accessible only within the block `{}` where they are declared.
+
+
+
 ```
 const people = [
   { id: 1, name: "John" },
@@ -895,6 +958,48 @@ How can you optimize JavaScript code for performance in large-scale applications
 How would you implement a memoization function and when is it useful?
 
 # INPUT s = "a2b3c1" output : "ced"
+
+## Snippet question
+
+```
+const potion1 = { name: "Healing", level: 1 };
+const potion2 = potion1;
+
+const potion3 = { ...potion2 };
+const potion4 = { ...potion3 };
+
+potion2.name = "Poison";
+potion3.level = 5;
+potion4.name = "Invisibility";
+
+console.log(potion1.name);//Poison
+console.log(potion1.level);//1
+console.log(potion3.name);//Healing
+console.log(potion4.level);//1
+// What will be the output of the above code?
+
+// The output of the above code will be:
+```
+```
+const firstHalf = [7, 8];
+const secondHalf = [9, 10];
+
+console.log(firstHalf + secondHalf); // "7,89,10"
+
+```
+```
+const shape = {
+ radius: 10,
+ diameter() {
+ return this.radius * 2;
+ },
+ perimeter: () => 2 * Math.PI * this.radius
+};
+
+console.log(shape.diameter()); 
+console.log(shape.perimeter());
+```
+
 
 
 
